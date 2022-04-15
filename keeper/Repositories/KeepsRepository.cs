@@ -38,8 +38,7 @@ namespace keeper.Repositories
         p.*
         FROM keeps k
         JOIN accounts p ON p.id = k.creatorId
-        WHERE k.id = @id
-        LIMIT 1;
+        WHERE k.id = @id;
       ";
       return _db.Query<Keep, Account, Keep>(sql, (keep, profile) =>
       {

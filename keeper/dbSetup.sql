@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS vaults(
   name TEXT NOT NULL,
   description TEXT NOT NULL,
   img TEXT NOT NULL,
-  isPrivate BOOLEAN NOT NULL
+  isPrivate BOOLEAN NOT NULL DEFAULT false
 ) default charset utf8 COMMENT '';
 CREATE TABLE IF NOT EXISTS vaultkeeps(
   id INT NOT NULL AUTO_INCREMENT primary key COMMENT 'primary key',
