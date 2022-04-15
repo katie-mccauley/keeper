@@ -77,6 +77,27 @@ namespace keeper.Repositories
       throw new Exception("there is no rows effected for deleting");
     }
 
+    internal List<VaultViewModel> GetKeepsByVaultId(int id)
+    {
+      string sql = @"
+      SELECT 
+        k.*, 
+        a.*, 
+        kv.*
+        FROM vaultkeeps kv
+        JOIN keeps k ON k.id = kv.keepId
+        JOIN accounts a ON a.id = k.creatorId
+        WHERE kv.vaultId = @id;
+      ";
+      List<VaultViewModel> vaults = _db.Query<VaultViewModel, Account, VaultKeep, VaultViewModel>(sql, (viewmodel, a, vaultkeep) =>
+      {
+        viewmodel.VaultKeepId = vaultkeep.Id;
+        viewmodel.Creator = a;
+        return viewmodel;
+      }, new { id }).ToList<VaultViewModel>();
+      return vaults;
+    }
+
     internal Keep Update(Keep original)
     {
       string sql = @"
