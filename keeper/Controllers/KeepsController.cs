@@ -26,7 +26,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         keepData.CreatorId = userInfo.Id;
         Keep keep = _ks.Create(keepData);
         keep.Creator = userInfo;
@@ -76,7 +76,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         updateData.Id = id;
         updateData.CreatorId = userInfo.Id;
         Keep keep = _ks.Update(updateData);
@@ -96,7 +96,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         return _ks.Remove(id, userInfo.Id);
       }
       catch (Exception e)

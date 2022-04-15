@@ -19,19 +19,24 @@ namespace keeper.Services
       return _repo.Create(vaultData);
     }
 
-    internal Vault GetById(int id)
+    internal Vault GetById(int id, string userId)
     {
       Vault found = _repo.GetById(id);
       if (found == null)
       {
         throw new Exception("No Keep post by that id");
       }
+      if (userId != found.CreatorId && found.IsPrivate)
+      {
+        throw new Exception("Invalid Id");
+      }
+
       return found;
     }
 
     internal Vault Update(Vault updateData)
     {
-      Vault original = GetById(updateData.Id);
+      Vault original = GetById(updateData.Id, updateData.CreatorId);
       if (updateData.CreatorId != original.CreatorId)
       {
         throw new Exception("You cannot edit a vault that isnt yours");
@@ -46,7 +51,7 @@ namespace keeper.Services
 
     internal ActionResult<string> Remove(int id, string userId)
     {
-      Vault original = GetById(id);
+      Vault original = GetById(id, userId);
       if (userId != original.CreatorId)
       {
         throw new Exception("You cannot delete a vault that isnt yours");

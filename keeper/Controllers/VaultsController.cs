@@ -43,11 +43,13 @@ namespace keeper.Controllers
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Vault> GetById(int id)
+    public async Task<ActionResult<Vault>> GetById(int id)
     {
       try
       {
-        return Ok(_vs.GetById(id));
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+
+        return Ok(_vs.GetById(id, userInfo.Id));
       }
       catch (Exception e)
       {
