@@ -47,5 +47,16 @@ namespace keeper.Services
       original.Img = updateData.Img ?? original.Img;
       return _repo.Update(original);
     }
+
+    internal string Remove(int id, string userId)
+    {
+      Keep original = GetById(id);
+      if (userId != original.CreatorId)
+      {
+        throw new Exception("You cannot delete a keep that isnt yours");
+
+      }
+      return _repo.Remove(id);
+    }
   }
 }

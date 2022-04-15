@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS vaults(
   creatorId VARCHAR(255) NOT NULL,
   name TEXT NOT NULL,
   description TEXT NOT NULL,
+  img TEXT NOT NULL,
   isPrivate BOOLEAN NOT NULL
 ) default charset utf8 COMMENT '';
 CREATE TABLE IF NOT EXISTS vaultkeeps(

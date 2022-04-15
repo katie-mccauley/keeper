@@ -65,6 +65,19 @@ namespace keeper.Repositories
       }).ToList();
     }
 
+    internal string Remove(int id)
+    {
+      string sql = @"
+      DELETE FROM keeps WHERE id = @id LIMIT 1;
+      ";
+      int rows = _db.Execute(sql, new { id });
+      if (rows > 0)
+      {
+        return "Keep is deleted";
+      }
+      throw new Exception("there is no rows effected for deleting");
+    }
+
     internal Keep Update(Keep original)
     {
       string sql = @"
