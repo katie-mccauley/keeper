@@ -12,8 +12,9 @@ CREATE TABLE IF NOT EXISTS keeps(
   name TEXT NOT NULL,
   description TEXT NOT NULL,
   img TEXT NOT NULL,
-  views INT NOT NULL,
-  kept INT NOT NULL
+  views INT NOT NULL DEFAULT 0,
+  kept INT NOT NULL DEFAULT 0,
+  shares INT NOT NULL DEFAULT 0
 ) default charset utf8 COMMENT '';
 CREATE TABLE IF NOT EXISTS vaults(
   id INT NOT NULL AUTO_INCREMENT primary key COMMENT 'primary key',

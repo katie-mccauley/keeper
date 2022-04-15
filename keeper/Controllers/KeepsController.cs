@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using keeper.Models;
@@ -27,10 +28,25 @@ namespace keeper.Controllers
       {
         Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
         keepData.CreatorId = userInfo.Id;
-        keepData.Kept = 0;
         Keep keep = _ks.Create(keepData);
         keep.Creator = userInfo;
         return Created($"api/keeps/{keep.Id}", keep);
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+
+      }
+    }
+
+    [HttpGet]
+    public ActionResult<List<Keep>> GetAllPosts()
+    {
+      try
+      {
+        List<Keep> keeps = _ks.GetAll();
+        return Ok(keeps);
       }
       catch (Exception e)
       {
