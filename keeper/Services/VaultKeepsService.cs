@@ -19,5 +19,10 @@ namespace keeper.Services
     {
       return _repo.Create(vaultKeepData);
     }
+
+    internal void Delete(int id, string userId)
+    {
+      _repo.Delete(id);
+    }
   }
 }

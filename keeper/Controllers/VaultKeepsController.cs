@@ -36,5 +36,20 @@ namespace keeper.Controllers
       }
     }
 
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<string>> Delete(int id)
+    {
+      try
+      {
+        Account user = await HttpContext.GetUserInfoAsync<Account>();
+        _vs.Delete(id, user.Id);
+        return Ok("Delorted");
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
   }
 }

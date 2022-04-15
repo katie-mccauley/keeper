@@ -26,5 +26,15 @@ namespace keeper.Repositories
       vaultKeepData.Id = id;
       return vaultKeepData;
     }
+
+    internal void Delete(int id)
+    {
+      string sql = @"
+      DELETE 
+      FROM vaultkeeps 
+      WHERE id = @id LIMIT 1;
+      ";
+      _db.Execute(sql, new { id });
+    }
   }
 }
