@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -62,6 +63,25 @@ namespace keeper.Repositories
         keep.Creator = profile;
         return keep;
       }).ToList();
+    }
+
+    internal Keep Update(Keep original)
+    {
+      string sql = @"
+      UPDATE keeps
+      SET
+      name = @Name, 
+      description = @Description, 
+      img = @Img
+      WHERE id = @Id;
+      ";
+      int rows = _db.Execute(sql, original);
+      if (rows > 0)
+      {
+        return original;
+
+      }
+      throw new Exception("there is no rows effected for editing");
     }
   }
 }

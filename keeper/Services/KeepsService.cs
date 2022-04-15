@@ -33,5 +33,19 @@ namespace keeper.Services
       }
       return found;
     }
+
+    internal Keep Update(Keep updateData)
+    {
+      Keep original = GetById(updateData.Id);
+      if (updateData.CreatorId != original.CreatorId)
+      {
+        throw new Exception("You cannot edit a keep that isnt yours");
+
+      }
+      original.Name = updateData.Name ?? original.Name;
+      original.Description = updateData.Description ?? original.Description;
+      original.Img = updateData.Img ?? original.Img;
+      return _repo.Update(original);
+    }
   }
 }

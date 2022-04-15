@@ -70,5 +70,26 @@ namespace keeper.Controllers
       }
     }
 
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<ActionResult<Keep>> Update([FromBody] Keep updateData, int id)
+    {
+      try
+      {
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        updateData.Id = id;
+        updateData.CreatorId = userInfo.Id;
+        Keep keep = _ks.Update(updateData);
+        return Ok(keep);
+
+      }
+      catch (Exception e)
+      {
+
+        return BadRequest(e.Message);
+
+      }
+    }
+
   }
 }
