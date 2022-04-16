@@ -1,8 +1,10 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="about text-start">
+    <div class="d-flex align-items-centerpb-5 m-2">
+      <img class="rounded" :src="account.picture" alt="" />
+      <h1 class="p-5 pt-2 ps-4">{{ account.name }}</h1>
+      <h3>{{ keepsAmount?.length }}</h3>
+    </div>
   </div>
 </template>
 
@@ -13,7 +15,8 @@ export default {
   name: 'Account',
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      keepsAmount: computed(() => AppState.keeps.filter(k => k.creatorId == AppState.account.id))
     }
   }
 }
