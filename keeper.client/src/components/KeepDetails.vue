@@ -42,7 +42,11 @@
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li v-for="p in profileVaults" :key="p.id">
-                      <button class="dropdown-item" type="button">
+                      <button
+                        class="dropdown-item"
+                        type="button"
+                        @click="createVaultKeep(p)"
+                      >
                         {{ p.name }}
                       </button>
                     </li>
@@ -71,6 +75,7 @@ import { logger } from "../utils/Logger"
 import { keepsService } from "../services/KeepsService"
 import { Modal } from "bootstrap"
 import { useRouter } from "vue-router"
+import { vaultKeepsService } from "../services/VaultKeepsService"
 export default {
   setup() {
     const router = useRouter()
@@ -89,7 +94,18 @@ export default {
 
         router.push({ name: 'Profile', params: { id } })
       },
-      profileVaults: computed(() => AppState.profileVaults)
+      profileVaults: computed(() => AppState.profileVaults),
+      async createVaultKeep(vk) {
+        try {
+          const createData = {
+            keepId: AppState.activeKeep.id,
+            vaultId: vk.id,
+          }
+          await vaultKeepsService.createVaultKeep(createData)
+        } catch (error) {
+          logger.error(error.message)
+        }
+      }
     }
   }
 }
