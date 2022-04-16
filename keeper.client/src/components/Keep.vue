@@ -1,11 +1,17 @@
 <template>
-  <div class="card selectable" @click="setActive">
+  <div
+    class="card selectable"
+    @click="setActive"
+    data-bs-toggle="modal"
+    data-bs-target="#active-keep"
+  >
     <img :src="keepData.img" class="img-fluid" alt="" />
     <div class="card-img-overlay">
       <h1>{{ keepData.name }}</h1>
       <img :src="keepData.creator.picture" class="img-fluid cropped" alt="" />
     </div>
   </div>
+  <KeepDetails />
 </template>
 
 
