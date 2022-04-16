@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid mt-2">
     <div class="masonry-with-columns">
-      <div class="space" v-for="k in keeps" :key="k.id">
-        <img :src="k.img" class="rounded cropped img-fluid" alt="" />
-        {{ k.name }}
+      <div class="" v-for="k in keeps" :key="k.id">
+        <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
+        <Keep :keepData="k" />
       </div>
     </div>
   </div>
@@ -25,7 +25,8 @@ export default {
       }
     })
     return {
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      // coverImg: computed(() => `url('${AppState.keeps.img}')`)
     }
   }
 }
@@ -47,4 +48,10 @@ export default {
   height: 300px;
   max-width: 250px;
 }
+
+// .cover-img {
+//   background-image: v-bind(coverImg);
+//   background-size: cover;
+//   background-position: center;
+// }
 </style>
