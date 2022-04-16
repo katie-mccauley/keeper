@@ -53,8 +53,8 @@ export default {
 
 <style lang="scss" scoped>
 .cropped {
-  height: 70px;
-  max-width: 70px;
+  height: 50px;
+  max-width: 50px;
   border-radius: 50%;
 }
 </style>

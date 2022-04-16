@@ -35,11 +35,7 @@
     <div class="masonry-with-columns">
       <div class="space rounded shadow" v-for="v in vaults" :key="v.id">
         <div class="card selectable">
-          <img :src="v.img" class="img-fluid" alt="" />
-          <div class="card-img-overlay">
-            <h1>{{ v.name }}</h1>
-            <img :src="v.creator.picture" class="img-fluid cropped" alt="" />
-          </div>
+          <Vault :vault="v" />
         </div>
       </div>
     </div>
@@ -99,8 +95,8 @@ export default {
 }
 
 .cropped {
-  height: 70px;
-  max-width: 70px;
+  height: 50px;
+  max-width: 50px;
   border-radius: 50%;
 }
 </style>
