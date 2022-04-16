@@ -1,7 +1,7 @@
 <template>
   <div
     class="card selectable"
-    @click="setActive"
+    @click="setActive(keepData.id)"
     data-bs-toggle="modal"
     data-bs-target="#active-keep"
   >
@@ -17,6 +17,7 @@
 
 <script>
 import { AppState } from "../AppState"
+import { keepsService } from "../services/KeepsService"
 import { logger } from "../utils/Logger"
 export default {
   props: {
@@ -28,9 +29,10 @@ export default {
   setup(props) {
     return {
       // coverImg: computed(() => `url('${props.keepData.img}')`)
-      setActive() {
+      async setActive(id) {
         try {
-          AppState.activeKeep = props.keepData
+          // AppState.activeKeep = props.keepData
+          await keepsService.getById(id);
           logger.log("active", AppState.activeKeep)
         } catch (error) {
           logger.error(error)
