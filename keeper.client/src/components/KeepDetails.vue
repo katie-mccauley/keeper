@@ -15,7 +15,7 @@
           <div class="col-md-6 p-0">
             <img :src="active.img" class="w-100 object-fit-cover" alt="" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 d-flex align-middle">
             <div>
               <div class="d-flex justify-content-around">
                 <h4 class="text-info">
@@ -31,13 +31,30 @@
 
               <h1>{{ active.name }}</h1>
               <h1>{{ active.description }}</h1>
-              <img
-                :src="active.creator?.picture"
-                @click="goToProfile(active.creator.id)"
-                class="img-fluid cropped"
-                alt=""
-              />
-              <div class="d-flex justify-content-around"></div>
+
+              <div class="row mt-5">
+                <div class="col-10 d-flex justify-content-between">
+                  <button
+                    class="btn outline-color dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                  >
+                    Add to Vault
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li v-for="p in profileVaults" :key="p.id">
+                      <button class="dropdown-item" type="button">
+                        {{ p.name }}
+                      </button>
+                    </li>
+                  </ul>
+                  <img
+                    :src="active.creator?.picture"
+                    @click="goToProfile(active.creator.id)"
+                    class="img-fluid cropped"
+                    alt=""
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -71,7 +88,8 @@ export default {
         Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
 
         router.push({ name: 'Profile', params: { id } })
-      }
+      },
+      profileVaults: computed(() => AppState.profileVaults)
     }
   }
 }
@@ -80,8 +98,12 @@ export default {
 
 <style lang="scss" scoped>
 .cropped {
-  height: 70px;
-  max-width: 70px;
+  height: 50px;
+  max-width: 50px;
   border-radius: 50%;
+}
+
+.outline-color {
+  border: 2px solid rgba(85, 239, 196, 1);
 }
 </style>
