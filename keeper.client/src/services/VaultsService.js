@@ -9,6 +9,12 @@ class VaultsService {
     AppState.profileVaults.push(res.data)
   }
 
+  async deleteVault(id) {
+    const res = await api.delete("api/vaults/" + id)
+    logger.log("deleting this vault", res.data)
+    AppState.profileVaults.filter(v => v.id != id)
+  }
+
 }
 
 export const vaultsService = new VaultsService()
