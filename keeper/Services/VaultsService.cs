@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using keeper.Models;
 using keeper.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,11 @@ namespace keeper.Services
       //   original.IsPrivate = updateData.IsPrivate ?? original.IsPrivate;
 
       return _repo.Update(original);
+    }
+
+    internal List<Vault> GetVaultsByUserId(string id)
+    {
+      return _repo.GetVaultsByUserId(id);
     }
 
     internal ActionResult<string> Remove(int id, string userId)

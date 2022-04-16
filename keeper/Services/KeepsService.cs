@@ -48,6 +48,11 @@ namespace keeper.Services
       return _repo.Update(original);
     }
 
+    internal List<Keep> GetKeepsByUserId(string id)
+    {
+      return _repo.GetKeepsByUserId(id);
+    }
+
     internal string Remove(int id, string userId)
     {
       Keep original = GetById(id);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -65,6 +66,23 @@ namespace keeper.Repositories
 
       }
       throw new Exception("there is no rows effected for editing");
+    }
+
+    internal List<Vault> GetVaultsByUserId(string id)
+    {
+      string sql = @"
+      SELECT 
+      v.*, 
+      a.*
+      FROM vaults v
+      JOIN accounts a ON a.id = v.creatorId
+      WHERE v.creatorId = @id;
+      ";
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
+      {
+        v.Creator = a;
+        return v;
+      }, new { id }).ToList();
     }
 
     internal ActionResult<string> Remove(int id)
