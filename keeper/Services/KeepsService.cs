@@ -64,7 +64,7 @@ namespace keeper.Services
       return _repo.Remove(id);
     }
 
-    internal List<VaultViewModel> GetKeepsByVaultId(int id)
+    internal List<VaultViewModel> GetKeepsByVaultId(int id, Profile userInfo)
     {
       return _repo.GetKeepsByVaultId(id);
     }

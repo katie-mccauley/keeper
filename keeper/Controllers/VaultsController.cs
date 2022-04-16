@@ -28,7 +28,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         vaultData.CreatorId = userInfo.Id;
         Vault vault = _vs.Create(vaultData);
         vault.Creator = userInfo;
@@ -49,7 +49,7 @@ namespace keeper.Controllers
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
 
-        return Ok(_vs.GetById(id, userInfo.Id));
+        return Ok(_vs.GetById(id, userInfo?.Id));
       }
       catch (Exception e)
       {
@@ -64,7 +64,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         updateData.Id = id;
         updateData.CreatorId = userInfo.Id;
         Vault vault = _vs.Update(updateData);
@@ -85,7 +85,7 @@ namespace keeper.Controllers
     {
       try
       {
-        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         return _vs.Remove(id, userInfo.Id);
       }
       catch (Exception e)
@@ -96,11 +96,12 @@ namespace keeper.Controllers
       }
     }
     [HttpGet("{id}/keeps")]
-    public ActionResult<List<VaultViewModel>> GetKeepsByVaultId(int id)
+    public async Task<ActionResult<List<VaultViewModel>>> GetKeepsByVaultId(int id)
     {
       try
       {
-        List<VaultViewModel> keeps = _ks.GetKeepsByVaultId(id);
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        List<VaultViewModel> keeps = _ks.GetKeepsByVaultId(id, userInfo);
         return Ok(keeps);
       }
       catch (Exception e)
