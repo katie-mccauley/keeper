@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mt-2">
     <div class="masonry-with-columns">
-      <div class="" v-for="k in keeps" :key="k.id">
+      <div class="space rounded shadow" v-for="k in keeps" :key="k.id">
         <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
         <Keep :keepData="k" />
       </div>

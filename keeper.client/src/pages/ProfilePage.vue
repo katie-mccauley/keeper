@@ -10,16 +10,23 @@
         <h3>Vaults: {{ vaults.length }}</h3>
       </div>
     </div>
-    <h2>Keeps:</h2>
+    <h2>
+      Keeps:
+      <i
+        data-bs-toggle="modal"
+        data-bs-target="#create-keep"
+        class="mdi mdi-plus text-primary"
+      ></i>
+    </h2>
     <div class="masonry-with-columns">
-      <div class="" v-for="k in keeps" :key="k.id">
+      <div class="space rounded shadow" v-for="k in keeps" :key="k.id">
         <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
         <Keep :keepData="k" />
       </div>
     </div>
     <h2>Vaults:</h2>
     <div class="masonry-with-columns">
-      <div v-for="v in vaults" :key="v.id">
+      <div class="space rounded shadow" v-for="v in vaults" :key="v.id">
         <div class="card selectable">
           <img :src="v.img" class="img-fluid" alt="" />
           <div class="card-img-overlay">
@@ -30,11 +37,17 @@
       </div>
     </div>
   </div>
+  <Modal id="create-keep">
+    <template #modal-title>Create Keep</template>
+    <template #modal-body>
+      <CreateKeep />
+    </template>
+  </Modal>
 </template>
 
 
 <script>
-import { computed, onMounted } from "@vue/runtime-core"
+import { computed, onMounted, watchEffect } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { profilesService } from "../services/ProfilesService"
@@ -42,7 +55,7 @@ import { AppState } from "../AppState"
 export default {
   setup() {
     const route = useRoute()
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await profilesService.getUser(route.params.id)
         await profilesService.getUserKeeps(route.params.id)
@@ -65,6 +78,11 @@ export default {
 .masonry-with-columns {
   columns: 4 200px;
   column-gap: 1rem;
+}
+.space {
+  display: inline-block;
+  margin: 0 0 0.5em;
+  width: 100%;
 }
 
 .cropped {
