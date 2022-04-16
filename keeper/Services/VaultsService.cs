@@ -50,6 +50,12 @@ namespace keeper.Services
       return _repo.Update(original);
     }
 
+    internal List<Vault> GetMyVaults(string userId)
+    {
+      List<Vault> vault = _repo.GetVaultsByUserId(userId);
+      return vault;
+    }
+
     internal List<Vault> GetVaultsByUserId(string id)
     {
       return _repo.GetVaultsByUserId(id);
