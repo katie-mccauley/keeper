@@ -26,7 +26,7 @@ class KeepsService {
   async createKeep(body) {
     const res = await api.post("api/keeps", body)
     logger.log("created this keep", res.data)
-    AppState.keeps.push(res.data)
+    AppState.profileKeeps.push(res.data)
   }
 }
 export const keepsService = new KeepsService()

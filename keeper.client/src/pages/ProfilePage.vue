@@ -24,7 +24,14 @@
         <Keep :keepData="k" />
       </div>
     </div>
-    <h2>Vaults:</h2>
+    <h2>
+      Vaults:
+      <i
+        data-bs-toggle="modal"
+        data-bs-target="#create-vault"
+        class="mdi mdi-plus text-primary"
+      ></i>
+    </h2>
     <div class="masonry-with-columns">
       <div class="space rounded shadow" v-for="v in vaults" :key="v.id">
         <div class="card selectable">
@@ -41,6 +48,12 @@
     <template #modal-title>Create Keep</template>
     <template #modal-body>
       <CreateKeep />
+    </template>
+  </Modal>
+  <Modal id="create-vault">
+    <template #modal-title>Create Vault</template>
+    <template #modal-body>
+      <CreateVault />
     </template>
   </Modal>
 </template>
