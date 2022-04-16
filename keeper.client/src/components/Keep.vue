@@ -5,7 +5,12 @@
     data-bs-toggle="modal"
     data-bs-target="#active-keep"
   >
-    <img :src="keepData.img" class="img-fluid" alt="" />
+    <img
+      :src="keepData.img"
+      @click="goToProfile(keepData.creator.id)"
+      class="img-fluid"
+      alt=""
+    />
     <div class="card-img-overlay">
       <h1>{{ keepData.name }}</h1>
       <img :src="keepData.creator.picture" class="img-fluid cropped" alt="" />
@@ -33,10 +38,12 @@ export default {
         try {
           // AppState.activeKeep = props.keepData
           await keepsService.getById(id);
-          logger.log("active", AppState.activeKeep)
         } catch (error) {
           logger.error(error)
         }
+      },
+      goToProfile(id) {
+        router.push({ name: 'Profile', params: { id } })
       }
     }
   }

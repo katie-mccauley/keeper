@@ -25,12 +25,18 @@
                   <i class="mdi mdi-save"></i>{{ active.kept }}
                 </h4>
                 <h4 class="text-info">
-                  <i class="mdi mdi-share"></i>{{ active.share }}
+                  <i class="mdi mdi-share"></i>{{ active.shares }}
                 </h4>
               </div>
 
               <h1>{{ active.name }}</h1>
               <h1>{{ active.description }}</h1>
+              <img
+                :src="active.creator?.picture"
+                @click="goToProfile(active.creator.id)"
+                class="img-fluid cropped"
+                alt=""
+              />
               <div class="d-flex justify-content-around"></div>
             </div>
           </div>
@@ -47,8 +53,10 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { keepsService } from "../services/KeepsService"
 import { Modal } from "bootstrap"
+import { useRouter } from "vue-router"
 export default {
   setup() {
+    const router = useRouter()
     return {
       active: computed(() => AppState.activeKeep),
       async deleteKeep(id) {
@@ -58,6 +66,11 @@ export default {
         } catch (error) {
           logger.error(error)
         }
+      },
+      goToProfile(id) {
+        Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+
+        router.push({ name: 'Profile', params: { id } })
       }
     }
   }
