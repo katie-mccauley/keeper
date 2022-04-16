@@ -17,7 +17,7 @@ class ProfilesService {
   }
 
   async getUserVaults(id) {
-    const res = await api.get("api/profiles/" + id + "/keeps")
+    const res = await api.get("api/profiles/" + id + "/vaults")
     logger.log("users vaults", res.data)
     AppState.profileVaults = res.data
   }
