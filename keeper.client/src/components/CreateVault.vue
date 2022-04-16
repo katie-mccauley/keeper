@@ -47,6 +47,16 @@
       />
     </div>
 
+    <div class="col-2 mb-2">
+      <label for="" class="form-label">Private?</label>
+      <input
+        v-model="editable.isPrivate"
+        type="checkbox"
+        class=""
+        aria-describedby="helpId"
+      />
+    </div>
+
     <div class="col-12 d-flex justify-content-end">
       <button class="btn btn-primary">create</button>
     </div>
