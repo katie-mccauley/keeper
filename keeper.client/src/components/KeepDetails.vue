@@ -4,6 +4,7 @@
       <h1>
         KeepDetails
         <i
+          v-if="account.id == active.creatorId"
           @click="deleteKeep(active.id)"
           class="mdi mdi-delete text-danger"
         ></i>
@@ -86,7 +87,7 @@
               </div>
               <div class="row justify-content-between align-items-bottom">
                 <!-- <div class="row justify-content-between"> -->
-                <div class="col-2">
+                <div class="col-2" v-if="account.id">
                   <button
                     class="btn outline-color dropdown-toggle"
                     data-bs-toggle="dropdown"
@@ -106,7 +107,10 @@
                   </ul>
                 </div>
                 <div class="col-2">
-                  <h3 class="text-danger selectable">
+                  <h3
+                    class="text-danger selectable"
+                    v-if="account.id == active.creatorId"
+                  >
                     <i class="mdi mdi-delete" @click="deleteVk()"></i>
                   </h3>
                 </div>
@@ -182,7 +186,9 @@ export default {
           logger.error(error.message)
 
         }
-      }
+      },
+      profile: computed(() => AppState.profile),
+      account: computed(() => AppState.account)
     }
   }
 }
