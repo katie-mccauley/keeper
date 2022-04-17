@@ -19,12 +19,12 @@
       ></i>
     </h2>
     <div class="masonry-with-columns">
-      <div class="space rounded shadow" v-for="k in keeps" :key="k.id">
+      <div class="space" v-for="k in keeps" :key="k.id">
         <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
         <Keep :keepData="k" />
       </div>
     </div>
-    <h2>
+    <h2 class="mt-5">
       Vaults:
       <i
         data-bs-toggle="modal"
@@ -33,8 +33,8 @@
       ></i>
     </h2>
     <div class="masonry-with-columns">
-      <div class="space rounded shadow" v-for="v in vaults" :key="v.id">
-        <div class="card selectable">
+      <div class="space" v-for="v in vaults" :key="v.id">
+        <div class="card selectable border border-3">
           <Vault :vault="v" />
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
 
 <style lang="scss" scoped>
 .masonry-with-columns {
-  columns: 6 200px;
+  columns: 4 200px;
   column-gap: 1rem;
 }
 .space {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card selectable"
+    class="card selectable border border-3 rounded"
     @click="setActive(keepData.id)"
     data-bs-toggle="modal"
     data-bs-target="#active-keep"
@@ -66,5 +66,8 @@ export default {
   height: 40px;
   max-width: 40px;
   border-radius: 50%;
+}
+.border-picked {
+  border-radius: 10px;
 }
 </style>

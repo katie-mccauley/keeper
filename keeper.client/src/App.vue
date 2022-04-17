@@ -2,12 +2,12 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="colormain">
     <router-view />
   </main>
-  <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+  <footer class="navcolor">
+    <div class="text-dark text-bold text-center p-4">
+      Made with 💖 by Katie McCauley
     </div>
   </footer>
 </template>
@@ -26,5 +26,11 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+.colormain {
+  background-color: aliceblue;
+}
 
+.navcolor {
+  background-color: #81ecec;
+}
 </style>

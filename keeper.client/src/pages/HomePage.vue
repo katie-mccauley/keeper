@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid mt-2">
-    <div class="masonry-with-columns">
-      <div class="space rounded shadow" v-for="k in keeps" :key="k.id">
+  <div class="container-fluid mt-5">
+    <div class="masonry-with-columns border-cropped">
+      <div class="space" v-for="k in keeps" :key="k.id">
         <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
         <Keep :keepData="k" />
       </div>
@@ -44,6 +44,9 @@ export default {
   width: 100%;
 }
 
+.border-cropped {
+  border-radius: 10px;
+}
 .cropped {
   height: 300px;
   max-width: 250px;
