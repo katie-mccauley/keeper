@@ -14,12 +14,14 @@ import { computed, onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { keepsService } from "../services/KeepsService"
 import { AppState } from "../AppState"
+import { vaultsService } from "../services/VaultsService"
 export default {
   name: 'Home',
   setup() {
     onMounted(async () => {
       try {
         await keepsService.getAll()
+        await vaultsService.getAccountVaults()
       } catch (error) {
         logger.error(error)
       }

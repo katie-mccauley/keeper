@@ -21,6 +21,12 @@ class VaultsService {
     AppState.activeVault = res.data
   }
 
+  async getAccountVaults() {
+    const res = await api.get('/account/vaults')
+    logger.log("All of my vaults")
+    // AppState.accountVaults = res.data
+  }
+
 }
 
 export const vaultsService = new VaultsService()

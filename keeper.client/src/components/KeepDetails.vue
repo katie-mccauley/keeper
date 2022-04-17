@@ -2,7 +2,7 @@
   <Modal id="active-keep">
     <template #modal-title>
       <h1>
-        KeepDetails
+        {{ active.name }}
         <i
           v-if="account.id == active.creatorId"
           @click="deleteKeep(active.id)"
@@ -188,7 +188,7 @@ export default {
         }
       },
       profile: computed(() => AppState.profile),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
     }
   }
 }
