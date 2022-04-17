@@ -14,6 +14,12 @@ class VaultsKeepsService {
     logger.log("all users vks", res.data)
     AppState.profileVaultKeeps = res.data
   }
+
+  async deleteVk(id) {
+    const res = await api.delete("api/vaultkeeps/" + id)
+    logger.log("deleting vaultkeeps", res.data)
+    AppState.profileVaultKeeps = AppState.profileVaultKeeps.filter(vk => vk.vaultKeepId != id)
+  }
 }
 
 export const vaultKeepsService = new VaultsKeepsService()

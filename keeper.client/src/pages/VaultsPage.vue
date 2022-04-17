@@ -9,7 +9,7 @@
     </div>
     <div class="masonry-with-columns">
       <div class="space rounded shadow" v-for="vk in vaultkeeps" :key="vk.id">
-        <div
+        <!-- <div
           class="card selectable rounded shadow"
           data-bs-toggle="modal"
           data-bs-target="#active-keep"
@@ -20,6 +20,9 @@
             <h1>{{ vk.name }}</h1>
             <img :src="vk.creator?.picture" class="img-fluid cropped" alt="" />
           </div>
+        </div> -->
+        <div @click="setActiveVk(vk)">
+          <Keep :keepData="vk" />
         </div>
       </div>
     </div>
@@ -32,7 +35,6 @@
       </div>
     </template>
   </Modal> -->
-  <KeepDetails />
 </template>
 
 
@@ -74,7 +76,13 @@ export default {
 
         }
       },
-      activeKeep: computed(() => AppState.activeKeep)
+      activeKeep: computed(() => AppState.activeKeep),
+      setActiveVk(vk) {
+        AppState.activeVaultKeep = {}
+        AppState.activeVaultKeep = vk
+        logger.log("vvkvkvkvk", AppState.activeVaultKeep)
+
+      }
     }
   }
 }

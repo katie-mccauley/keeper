@@ -105,6 +105,11 @@
                     </li>
                   </ul>
                 </div>
+                <div class="col-2">
+                  <h3 class="text-danger selectable">
+                    <i class="mdi mdi-delete" @click="deleteVk()"></i>
+                  </h3>
+                </div>
 
                 <div class="col-2">
                   <img
@@ -134,6 +139,12 @@ import { Modal } from "bootstrap"
 import { useRouter } from "vue-router"
 import { vaultKeepsService } from "../services/VaultKeepsService"
 export default {
+  // props: {
+  //   vaultKeep: {
+  //     type: Object,
+  //     required: true,
+  //   }
+  // },
   setup() {
     const router = useRouter()
     return {
@@ -161,6 +172,15 @@ export default {
           await vaultKeepsService.createVaultKeep(createData)
         } catch (error) {
           logger.error(error.message)
+        }
+      },
+      async deleteVk() {
+        try {
+          Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+          await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
+        } catch (error) {
+          logger.error(error.message)
+
         }
       }
     }

@@ -15,6 +15,12 @@ class VaultsService {
     AppState.profileVaults.filter(v => v.id != id)
   }
 
+  async getById(id) {
+    const res = await api.get("api/vaults/" + id)
+    logger.log("this is an active vault", res.data)
+    AppState.activeVault = res.data
+  }
+
 }
 
 export const vaultsService = new VaultsService()

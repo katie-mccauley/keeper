@@ -20,6 +20,7 @@
 
 <script>
 import { useRoute, useRouter } from "vue-router"
+import { vaultsService } from "../services/VaultsService"
 import { logger } from "../utils/Logger"
 export default {
   props: {
@@ -31,8 +32,9 @@ export default {
   setup() {
     const router = useRouter()
     return {
-      goToVault(id) {
+      async goToVault(id) {
         router.push({ name: 'Vaults', params: { id } })
+        await vaultsService.getById(id)
       }
     }
   }

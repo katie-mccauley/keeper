@@ -5,12 +5,7 @@
     data-bs-toggle="modal"
     data-bs-target="#active-keep"
   >
-    <img
-      :src="keepData.img"
-      @click="goToProfile(keepData.creator.id)"
-      class="img-fluid cover"
-      alt=""
-    />
+    <img :src="keepData.img" class="img-fluid cover" alt="" />
     <div class="card-img-overlay d-flex align-items-end">
       <div class="row justify-content-around">
         <div class="col-10">
@@ -52,9 +47,9 @@ export default {
           logger.error(error)
         }
       },
-      goToProfile(id) {
-        router.push({ name: 'Profile', params: { id } })
-      }
+      // goToProfile(id) {
+      //   router.push({ name: 'Profile', params: { id } })
+      // }
     }
   }
 }

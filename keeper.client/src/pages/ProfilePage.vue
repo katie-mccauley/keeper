@@ -40,18 +40,18 @@
       </div>
     </div>
   </div>
-  <Modal id="create-keep">
-    <template #modal-title>Create Keep</template>
-    <template #modal-body>
+  <ModalForm id="create-keep">
+    <template #title>Create Keep</template>
+    <template #body>
       <CreateKeep />
     </template>
-  </Modal>
-  <Modal id="create-vault">
-    <template #modal-title>Create Vault</template>
-    <template #modal-body>
+  </ModalForm>
+  <ModalForm id="create-vault">
+    <template #title>Create Vault</template>
+    <template #body>
       <CreateVault />
     </template>
-  </Modal>
+  </ModalForm>
 </template>
 
 
