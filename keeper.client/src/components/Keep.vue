@@ -11,9 +11,19 @@
       class="img-fluid"
       alt=""
     />
-    <div class="card-img-overlay">
-      <h1>{{ keepData.name }}</h1>
-      <img :src="keepData.creator.picture" class="img-fluid cropped" alt="" />
+    <div class="card-img-overlay d-flex align-items-end">
+      <div class="row">
+        <div class="col-10">
+          <h1 class="text-light">{{ keepData.name }}</h1>
+        </div>
+        <div class="col-2 d-flex align-items-center">
+          <img
+            :src="keepData.creator.picture"
+            class="img-fluid cropped"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   </div>
   <KeepDetails />
@@ -53,8 +63,8 @@ export default {
 
 <style lang="scss" scoped>
 .cropped {
-  height: 50px;
-  max-width: 50px;
+  height: 40px;
+  max-width: 40px;
   border-radius: 50%;
 }
 </style>

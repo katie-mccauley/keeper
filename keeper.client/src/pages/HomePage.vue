@@ -34,13 +34,13 @@ export default {
 
 <style scoped lang="scss">
 .masonry-with-columns {
-  columns: 6 200px;
-  column-gap: 1rem;
+  columns: 4 200px;
+  column-gap: 0.8rem;
 }
 
 .space {
   display: inline-block;
-  margin: 0 0 0.5em;
+  margin: 0 0 0.8em;
   width: 100%;
 }
 
