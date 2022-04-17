@@ -149,6 +149,8 @@ import { keepsService } from "../services/KeepsService"
 import { Modal } from "bootstrap"
 import { useRoute, useRouter } from "vue-router"
 import { vaultKeepsService } from "../services/VaultKeepsService"
+import { watchEffect } from "@vue/runtime-core"
+import { profilesService } from "../services/ProfilesService"
 export default {
   // props: {
   //   vaultKeep: {
@@ -157,6 +159,9 @@ export default {
   //   }
   // },
   setup() {
+    // watchEffect(async ()=> {
+    //   await profilesService.getUserKeeps
+    // })
     const router = useRouter()
     const route = useRoute()
     return {
