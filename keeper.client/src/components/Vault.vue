@@ -7,7 +7,7 @@
     <div class="card-img-overlay d-flex align-items-end">
       <div class="row">
         <div class="col-10">
-          <h1>{{ vault.name }}</h1>
+          <h1 class="text-light">{{ vault.name }}</h1>
         </div>
         <div class="col-2">
           <img :src="vault.creator.picture" class="img-fluid cropped" alt="" />

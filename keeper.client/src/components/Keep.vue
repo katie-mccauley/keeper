@@ -8,11 +8,11 @@
     <img
       :src="keepData.img"
       @click="goToProfile(keepData.creator.id)"
-      class="img-fluid"
+      class="img-fluid cover"
       alt=""
     />
     <div class="card-img-overlay d-flex align-items-end">
-      <div class="row">
+      <div class="row justify-content-around">
         <div class="col-10">
           <h1 class="text-light">{{ keepData.name }}</h1>
         </div>
@@ -66,6 +66,9 @@ export default {
   height: 40px;
   max-width: 40px;
   border-radius: 50%;
+}
+.cover {
+  object-fit: cover;
 }
 .border-picked {
   border-radius: 10px;
