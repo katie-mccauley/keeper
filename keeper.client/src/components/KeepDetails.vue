@@ -165,6 +165,7 @@ export default {
     return {
       route,
       active: computed(() => AppState.activeKeep),
+      activeVault: computed(() => AppState.activeVault),
       async deleteKeep(id) {
         try {
           Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
