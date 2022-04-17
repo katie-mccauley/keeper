@@ -6,7 +6,7 @@
     data-bs-target="#active-keep"
   >
     <img :src="keepData.img" class="img-fluid cover" alt="" />
-    <div class="card-img-overlay d-flex align-items-end">
+    <div class="card-img-overlay d-flex align-items-end backgroundfix">
       <div class="row justify-content-around">
         <div class="col-10">
           <h1 class="text-light">{{ keepData.name }}</h1>
@@ -67,5 +67,12 @@ export default {
 }
 .border-picked {
   border-radius: 10px;
+}
+.backgroundfix {
+  background: linear-gradient(
+    180.45deg,
+    rgba(0, 0, 0, 0) 67.72%,
+    rgba(0, 0, 0, 0.53) 99.61%
+  );
 }
 </style>

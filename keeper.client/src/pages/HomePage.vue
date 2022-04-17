@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid mt-5">
+  <div class="container-fluid mt-5 textcolor">
     <div class="masonry-with-columns border-cropped">
       <div class="space" v-for="k in keeps" :key="k.id">
         <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
@@ -50,6 +50,19 @@ export default {
 .cropped {
   height: 300px;
   max-width: 250px;
+}
+.textcolor {
+  font-family: "Inter";
+  font-style: normal;
+  color: #000000;
+}
+
+.backgroundfix {
+  background: linear-gradient(
+    180.45deg,
+    rgba(0, 0, 0, 0) 67.72%,
+    rgba(0, 0, 0, 0.53) 99.61%
+  );
 }
 
 // .cover-img {

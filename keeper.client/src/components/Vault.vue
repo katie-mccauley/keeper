@@ -4,7 +4,7 @@
     @click="goToVault(vault.id)"
   >
     <img :src="vault.img" class="img-fluid" alt="" />
-    <div class="card-img-overlay d-flex align-items-end">
+    <div class="card-img-overlay d-flex align-items-end backgroundfix">
       <div class="row">
         <div class="col-10">
           <h1 class="text-light">{{ vault.name }}</h1>
@@ -47,5 +47,13 @@ export default {
   height: 50px;
   max-width: 50px;
   border-radius: 50%;
+}
+
+.backgroundfix {
+  background: linear-gradient(
+    180.45deg,
+    rgba(0, 0, 0, 0) 67.72%,
+    rgba(0, 0, 0, 0.53) 99.61%
+  );
 }
 </style>

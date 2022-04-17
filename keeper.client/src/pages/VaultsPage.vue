@@ -5,7 +5,7 @@
         <h1>{{ activeVault.name }}</h1>
         <h3>Keeps: {{ vaultkeeps.length }}</h3>
       </div>
-      <div class="col-2">
+      <div v-if="activeVault.creatorId == account.id" class="col-2">
         <button class="btn btn-outline-danger" @click="deleteVault()">
           Delete Vault
         </button>
@@ -87,7 +87,8 @@ export default {
         // logger.log("vvkvkvkvk", AppState.activeVaultKeep)
 
       },
-      activeVault: computed(() => AppState.activeVault)
+      activeVault: computed(() => AppState.activeVault),
+      account: computed(() => AppState.account)
     }
   }
 }
