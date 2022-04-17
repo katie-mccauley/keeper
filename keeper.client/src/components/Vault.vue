@@ -1,9 +1,18 @@
 <template>
-  <div @click="goToVault(vault.id)">
+  <div
+    class="card selectable border border-3 rounded"
+    @click="goToVault(vault.id)"
+  >
     <img :src="vault.img" class="img-fluid" alt="" />
-    <div class="card-img-overlay">
-      <h1>{{ vault.name }}</h1>
-      <img :src="vault.creator.picture" class="img-fluid cropped" alt="" />
+    <div class="card-img-overlay d-flex align-items-end">
+      <div class="row">
+        <div class="col-10">
+          <h1>{{ vault.name }}</h1>
+        </div>
+        <div class="col-2">
+          <img :src="vault.creator.picture" class="img-fluid cropped" alt="" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,8 +1,10 @@
 <template>
-  <div class="container-fluid mt-2">
+  <div class="container-fluid mt-2 textcolor">
     <div class="row m-3 ms-0">
       <div class="col-1">
-        <img :src="profile.picture" class="img-fluid cropped" alt="" />
+        <div class="card">
+          <img :src="profile.picture" class="img-fluid" alt="" />
+        </div>
       </div>
       <div class="col-5">
         <h1>{{ profile.name }}</h1>
@@ -34,9 +36,7 @@
     </h2>
     <div class="masonry-with-columns">
       <div class="space" v-for="v in vaults" :key="v.id">
-        <div class="card selectable border border-3">
-          <Vault :vault="v" />
-        </div>
+        <Vault :vault="v" />
       </div>
     </div>
   </div>
@@ -98,5 +98,11 @@ export default {
   height: 50px;
   max-width: 50px;
   border-radius: 50%;
+}
+
+.textcolor {
+  font-family: "Inter";
+  font-style: normal;
+  color: #000000;
 }
 </style>
