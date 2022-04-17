@@ -21,7 +21,7 @@ export default {
     onMounted(async () => {
       try {
         await keepsService.getAll()
-        await vaultsService.getAccountVaults()
+        // await vaultsService.getAccountVaults()
       } catch (error) {
         logger.error(error)
       }

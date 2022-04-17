@@ -1,7 +1,7 @@
 <template>
   <div
     class="card selectable border border-3 rounded"
-    @click="goToVault(vault.id)"
+    @click="goToVault(vault)"
   >
     <img :src="vault.img" class="img-fluid" alt="" />
     <div class="card-img-overlay d-flex align-items-end backgroundfix">
@@ -20,6 +20,7 @@
 
 <script>
 import { useRoute, useRouter } from "vue-router"
+import { AppState } from "../AppState"
 import { vaultsService } from "../services/VaultsService"
 import { logger } from "../utils/Logger"
 export default {
@@ -32,9 +33,15 @@ export default {
   setup() {
     const router = useRouter()
     return {
-      async goToVault(id) {
-        router.push({ name: 'Vaults', params: { id } })
-        await vaultsService.getById(id)
+      async goToVault(vault) {
+        if (vault.isPrivate == true && vault.creatorId != AppState.account.id) {
+          router.push({ name: 'Home' })
+        } else {
+          const id = vault.id
+          router.push({ name: 'Vaults', params: { id } })
+          await vaultsService.getById(id)
+        }
+
       }
     }
   }
