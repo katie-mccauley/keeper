@@ -8,10 +8,12 @@ namespace keeper.Services
   public class KeepsService
   {
     private readonly KeepsRepository _repo;
+    private readonly VaultsRepository _vaultsrepo;
 
-    public KeepsService(KeepsRepository repo)
+    public KeepsService(KeepsRepository repo, VaultsRepository vaultsrepo)
     {
       _repo = repo;
+      _vaultsrepo = vaultsrepo;
     }
 
     internal Keep Create(Keep keepData)
@@ -66,6 +68,11 @@ namespace keeper.Services
 
     internal List<VaultViewModel> GetKeepsByVaultId(int id, Profile userInfo)
     {
+      Vault found = _vaultsrepo.GetById(id);
+      if (found.IsPrivate && found.CreatorId != userInfo?.Id)
+      {
+        throw new Exception("Can't see private information");
+      }
       return _repo.GetKeepsByVaultId(id);
     }
   }
