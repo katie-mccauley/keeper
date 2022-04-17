@@ -15,6 +15,7 @@
     <h2>
       Keeps:
       <i
+        v-if="account.id == profile.id"
         data-bs-toggle="modal"
         data-bs-target="#create-keep"
         class="mdi mdi-plus text-primary"
@@ -29,6 +30,7 @@
     <h2 class="mt-5">
       Vaults:
       <i
+        v-if="account.id == profile.id"
         data-bs-toggle="modal"
         data-bs-target="#create-vault"
         class="mdi mdi-plus text-primary"
@@ -76,7 +78,8 @@ export default {
     return {
       keeps: computed(() => AppState.profileKeeps),
       vaults: computed(() => AppState.profileVaults),
-      profile: computed(() => AppState.profile)
+      profile: computed(() => AppState.profile),
+      account: computed(() => AppState.account)
     }
   }
 }

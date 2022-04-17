@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid mt-4">
-    <div class="row justify-content-end">
+    <div class="row justify-content-between mb-5 textcolor">
+      <div class="col-5">
+        <h1>{{ activeVault.name }}</h1>
+        <h3>Keeps: {{ vaultkeeps.length }}</h3>
+      </div>
       <div class="col-2">
         <button class="btn btn-outline-danger" @click="deleteVault()">
           Delete Vault
@@ -80,9 +84,10 @@ export default {
       setActiveVk(vk) {
         AppState.activeVaultKeep = {}
         AppState.activeVaultKeep = vk
-        logger.log("vvkvkvkvk", AppState.activeVaultKeep)
+        // logger.log("vvkvkvkvk", AppState.activeVaultKeep)
 
-      }
+      },
+      activeVault: computed(() => AppState.activeVault)
     }
   }
 }
@@ -98,6 +103,12 @@ export default {
   display: inline-block;
   margin: 0 0 0.5em;
   width: 100%;
+}
+
+.textcolor {
+  font-family: "Inter";
+  font-style: normal;
+  color: #000000;
 }
 
 .cropped {
