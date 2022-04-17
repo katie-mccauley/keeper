@@ -57,7 +57,7 @@ export default {
     onMounted(async () => {
       try {
         await vaultKeepsService.getVaultKeeps(route.params.id)
-        // await vaultsService.getById(AppState.activeVault.id)
+        await vaultsService.getById(route.params.id)
 
       } catch (error) {
         logger.error(error.message)
