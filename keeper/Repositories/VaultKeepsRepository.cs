@@ -31,6 +31,14 @@ namespace keeper.Repositories
       return vaultKeepData;
     }
 
+    internal VaultKeep GetVaultKeepById(int id)
+    {
+      string sql = @"
+      SELECT * FROM vaultkeeps WHERE id = @id;
+      ";
+      return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
+    }
+
     internal void Delete(int id)
     {
       string sql = @"
