@@ -4,7 +4,8 @@
       <h1>
         {{ active.name }}
         <i
-          v-if="account.id == active.creatorId"
+          v-if="account.id == active.creatorId && route.name != 'Vaults'"
+          title="delete keep"
           @click="deleteKeep(active.id)"
           class="mdi mdi-delete text-danger"
         ></i>
@@ -65,17 +66,17 @@
               <div class="col-md-12 text-center">
                 <div class="row">
                   <div class="col-md-4">
-                    <h4 class="text-info">
+                    <h4 class="textcolor">
                       <i class="mdi mdi-eye"></i> {{ active.views }}
                     </h4>
                   </div>
                   <div class="col-md-4">
-                    <h4 class="text-info">
+                    <h4 class="textcolor">
                       <i class="mdi mdi-save"></i>{{ active.kept }}
                     </h4>
                   </div>
                   <div class="col-md-4">
-                    <h4 class="text-info">
+                    <h4 class="textcolor">
                       <i class="mdi mdi-share"></i>{{ active.shares }}
                     </h4>
                   </div>
@@ -87,7 +88,7 @@
               </div>
               <div class="row justify-content-between align-items-bottom">
                 <!-- <div class="row justify-content-between"> -->
-                <div class="col-2" v-if="account.id">
+                <div class="col-2" v-if="account.id && route.name != 'Vaults'">
                   <button
                     class="btn outline-color dropdown-toggle"
                     data-bs-toggle="dropdown"
@@ -108,10 +109,16 @@
                 </div>
                 <div class="col-2">
                   <h3
-                    class="text-danger selectable"
-                    v-if="account.id == active.creatorId"
+                    class="text-danger"
+                    v-if="
+                      account.id == active.creatorId && route.name == 'Vaults'
+                    "
                   >
-                    <i class="mdi mdi-delete" @click="deleteVk()"></i>
+                    <i
+                      class="mdi mdi-delete selectable"
+                      title="delete saved keeped vaults"
+                      @click="deleteVk()"
+                    ></i>
                   </h3>
                 </div>
 
@@ -140,7 +147,7 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { keepsService } from "../services/KeepsService"
 import { Modal } from "bootstrap"
-import { useRouter } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { vaultKeepsService } from "../services/VaultKeepsService"
 export default {
   // props: {
@@ -151,7 +158,9 @@ export default {
   // },
   setup() {
     const router = useRouter()
+    const route = useRoute()
     return {
+      route,
       active: computed(() => AppState.activeKeep),
       async deleteKeep(id) {
         try {
@@ -204,5 +213,9 @@ export default {
 
 .outline-color {
   border: 2px solid rgba(85, 239, 196, 1);
+}
+
+.textcolor {
+  color: rgba(85, 239, 196, 1);
 }
 </style>
