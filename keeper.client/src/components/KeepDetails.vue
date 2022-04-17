@@ -110,9 +110,7 @@
                 <div class="col-2">
                   <h3
                     class="text-danger"
-                    v-if="
-                      account.id == active.creatorId && route.name == 'Vaults'
-                    "
+                    v-if="account.id && route.name == 'Vaults'"
                   >
                     <i
                       class="mdi mdi-delete selectable"
