@@ -52,7 +52,7 @@ namespace keeper.Services
       {
         throw new Exception("can't deelte a vaultkeep that isnt yours");
       }
-      _repo.Delete(id);
+      _repo.Delete(id, found.KeepId);
     }
   }
 }

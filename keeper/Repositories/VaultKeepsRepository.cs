@@ -39,14 +39,18 @@ namespace keeper.Repositories
       return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
     }
 
-    internal void Delete(int id)
+    internal void Delete(int id, int keepId)
     {
       string sql = @"
+      UPDATE keeps
+      SET
+      kept = kept - 1
+      WHERE id = @keepId;
       DELETE 
       FROM vaultkeeps 
       WHERE id = @id LIMIT 1;
       ";
-      _db.Execute(sql, new { id });
+      _db.Execute(sql, new { id, keepId });
     }
   }
 }
