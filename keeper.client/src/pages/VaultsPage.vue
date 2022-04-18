@@ -116,6 +116,14 @@ export default {
   columns: 6 200px;
   column-gap: 1rem;
 }
+
+@media screen AND (max-width: 600px) {
+  .masonry-with-columns {
+    columns: 2 150px;
+    column-gap: 0.8rem;
+  }
+}
+
 .space {
   display: inline-block;
   margin: 0 0 0.5em;
