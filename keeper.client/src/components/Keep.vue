@@ -13,7 +13,7 @@
         </div>
         <div class="col-2 d-flex align-items-center">
           <img
-            :src="keepData.creator.picture"
+            :src="keepData.creator?.picture"
             class="img-fluid cropped"
             alt=""
           />

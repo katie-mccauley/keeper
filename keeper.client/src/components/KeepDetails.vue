@@ -7,7 +7,7 @@
           v-if="account.id == active.creatorId && route.name != 'Vaults'"
           title="delete keep"
           @click="deleteKeep(active.id)"
-          class="mdi mdi-delete text-danger"
+          class="mdi mdi-delete text-danger selectable"
         ></i>
       </h1>
     </template>
@@ -92,6 +92,7 @@
                   <button
                     class="btn outline-color dropdown-toggle"
                     data-bs-toggle="dropdown"
+                    title="Add Keep to Vault"
                   >
                     Add to Vault
                   </button>
@@ -110,7 +111,9 @@
                 <div class="col-2">
                   <h3
                     class="text-danger"
-                    v-if="account.id && route.name == 'Vaults'"
+                    v-if="
+                      account.id == active.creatorId && route.name == 'Vaults'
+                    "
                   >
                     <i
                       class="mdi mdi-delete selectable"
@@ -123,9 +126,10 @@
                 <div class="col-2">
                   <img
                     :src="active.creator?.picture"
-                    @click="goToProfile(active.creator.id)"
-                    class="img-fluid cropped"
-                    alt=""
+                    @click="goToProfile(active.creatorId)"
+                    class="img-fluid cropped selectable"
+                    :alt="active.name + 'profile picture'"
+                    :title="active.name + 'profile picture'"
                   />
                 </div>
                 <!-- </div> -->
@@ -149,6 +153,7 @@ import { useRoute, useRouter } from "vue-router"
 import { vaultKeepsService } from "../services/VaultKeepsService"
 import { watchEffect } from "@vue/runtime-core"
 import { profilesService } from "../services/ProfilesService"
+import Pop from "../utils/Pop"
 export default {
   // props: {
   //   vaultKeep: {
@@ -157,9 +162,6 @@ export default {
   //   }
   // },
   setup() {
-    // watchEffect(async ()=> {
-    //   await profilesService.getUserKeeps
-    // })
     const router = useRouter()
     const route = useRoute()
     return {
@@ -168,8 +170,10 @@ export default {
       activeVault: computed(() => AppState.activeVault),
       async deleteKeep(id) {
         try {
-          Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
-          await keepsService.deleteKeep(id)
+          if (await Pop.confirm()) {
+            Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+            await keepsService.deleteKeep(id)
+          }
         } catch (error) {
           logger.error(error)
         }
@@ -193,8 +197,11 @@ export default {
       },
       async deleteVk() {
         try {
-          Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
-          await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
+          if (await Pop.confirm()) {
+            Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+            await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
+          }
+
         } catch (error) {
           logger.error(error.message)
 

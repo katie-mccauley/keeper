@@ -50,11 +50,12 @@ import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { vaultsService } from "../services/VaultsService"
 import { keepsService } from "../services/KeepsService"
+import Pop from "../utils/Pop"
 export default {
   setup() {
     const route = useRoute()
     const router = useRouter()
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await vaultKeepsService.getVaultKeeps(route.params.id)
         await vaultsService.getById(route.params.id)
@@ -67,8 +68,11 @@ export default {
       vaultkeeps: computed(() => AppState.profileVaultKeeps),
       async deleteVault() {
         try {
-          router.push({ name: 'Home' })
-          await vaultsService.deleteVault(route.params.id)
+          if (await Pop.confirm()) {
+            router.push({ name: 'Home' })
+            await vaultsService.deleteVault(route.params.id)
+          }
+
         } catch (error) {
           logger.error(error)
         }

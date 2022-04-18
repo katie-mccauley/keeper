@@ -10,7 +10,7 @@
           <h1 class="text-light">{{ vault.name }}</h1>
         </div>
         <div class="col-2">
-          <img :src="vault.creator.picture" class="img-fluid cropped" alt="" />
+          <img :src="vault.creator?.picture" class="img-fluid cropped" alt="" />
         </div>
       </div>
     </div>

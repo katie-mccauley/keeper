@@ -18,7 +18,8 @@
         v-if="account.id == profile.id"
         data-bs-toggle="modal"
         data-bs-target="#create-keep"
-        class="mdi mdi-plus text-primary"
+        class="mdi mdi-plus text-primary selectable"
+        title="Create Keep"
       ></i>
     </h2>
     <div class="masonry-with-columns">
@@ -33,7 +34,8 @@
         v-if="account.id == profile.id"
         data-bs-toggle="modal"
         data-bs-target="#create-vault"
-        class="mdi mdi-plus text-primary"
+        class="mdi mdi-plus text-primary selectable"
+        title="Create Vault"
       ></i>
     </h2>
     <div class="masonry-with-columns">
