@@ -64,8 +64,11 @@ export default {
     const router = useRouter()
     watchEffect(async () => {
       try {
-        await vaultKeepsService.getVaultKeeps(route.params.id)
-        await vaultsService.getById(route.params.id)
+        if (route.name == 'Vaults') {
+          await vaultKeepsService.getVaultKeeps(route.params.id)
+          await vaultsService.getById(route.params.id)
+        }
+
 
       } catch (error) {
         logger.error(error.message)

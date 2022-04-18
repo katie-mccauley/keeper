@@ -70,9 +70,12 @@ export default {
     const route = useRoute()
     watchEffect(async () => {
       try {
-        await profilesService.getUser(route.params.id)
-        await profilesService.getUserKeeps(route.params.id)
-        await profilesService.getUserVaults(route.params.id)
+        if (route.name == 'Profile') {
+          await profilesService.getUser(route.params.id)
+          await profilesService.getUserKeeps(route.params.id)
+          await profilesService.getUserVaults(route.params.id)
+        }
+
       } catch (error) {
         logger.log(error.message)
       }
