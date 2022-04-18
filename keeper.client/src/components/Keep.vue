@@ -7,11 +7,11 @@
   >
     <img :src="keepData.img" class="img-fluid cover" alt="" />
     <div class="card-img-overlay d-flex align-items-end backgroundfix">
-      <div class="row justify-content-around">
-        <div class="col-10">
+      <div class="row justify-content-md-around box">
+        <div class="col-md-10 col-8">
           <h1 class="text-light">{{ keepData.name }}</h1>
         </div>
-        <div class="col-2 d-flex align-items-center">
+        <div class="col-md-2 col-1 d-flex align-items-center">
           <img
             :src="keepData.creator?.picture"
             class="img-fluid cropped"
@@ -74,5 +74,11 @@ export default {
     rgba(0, 0, 0, 0) 67.72%,
     rgba(0, 0, 0, 0.53) 99.61%
   );
+}
+
+@media screen AND (max-width: 600px) {
+  .box {
+    inline-size: 140px;
+  }
 }
 </style>

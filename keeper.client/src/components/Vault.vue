@@ -4,12 +4,19 @@
     @click="goToVault(vault)"
   >
     <img :src="vault.img" class="img-fluid" alt="" />
-    <div class="card-img-overlay d-flex align-items-end backgroundfix">
-      <div class="row">
-        <div class="col-10">
+    <div
+      class="
+        card-img-overlay
+        d-flex
+        align-items-md-end align-items-center
+        backgroundfix
+      "
+    >
+      <div class="row box">
+        <div class="col-md-10 col-8">
           <h1 class="text-light">{{ vault.name }}</h1>
         </div>
-        <div class="col-2">
+        <div class="col-md-2 col-1 p-1 d-flex align-items-center">
           <img :src="vault.creator?.picture" class="img-fluid cropped" alt="" />
         </div>
       </div>
@@ -62,5 +69,16 @@ export default {
     rgba(0, 0, 0, 0) 67.72%,
     rgba(0, 0, 0, 0.53) 99.61%
   );
+}
+
+@media screen AND (max-width: 600px) {
+  .box {
+    inline-size: 150px;
+  }
+  .cropped {
+    height: 40px;
+    max-width: 40px;
+    border-radius: 50%;
+  }
 }
 </style>

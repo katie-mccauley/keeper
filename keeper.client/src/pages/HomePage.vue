@@ -72,4 +72,11 @@ export default {
 //   background-size: cover;
 //   background-position: center;
 // }
+
+@media screen AND (max-width: 600px) {
+  .masonry-with-columns {
+    columns: 2 100px;
+    column-gap: 0.8rem;
+  }
+}
 </style>

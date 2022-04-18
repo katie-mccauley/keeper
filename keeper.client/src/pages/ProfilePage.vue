@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid mt-2 textcolor">
     <div class="row m-3 ms-0">
-      <div class="col-1">
+      <div class="col-md-1 col-3">
         <div class="card">
           <img :src="profile.picture" class="img-fluid" alt="" />
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-md-5 col-7">
         <h1>{{ profile.name }}</h1>
         <h3>Keeps: {{ keeps.length }}</h3>
         <h3>Vaults: {{ vaults.length }}</h3>
@@ -93,6 +93,14 @@ export default {
   columns: 4 200px;
   column-gap: 1rem;
 }
+
+@media screen AND (max-width: 600px) {
+  .masonry-with-columns {
+    columns: 2 150px;
+    column-gap: 0.8rem;
+  }
+}
+
 .space {
   display: inline-block;
   margin: 0 0 0.5em;

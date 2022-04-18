@@ -12,7 +12,7 @@
     "
     @submit.prevent="createKeep"
   >
-    <h2>Create Project</h2>
+    <h2>Create Keep</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input

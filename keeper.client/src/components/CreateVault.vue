@@ -12,7 +12,7 @@
     "
     @submit.prevent="createVault"
   >
-    <h2>Create Project</h2>
+    <h2>Create Vault</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input

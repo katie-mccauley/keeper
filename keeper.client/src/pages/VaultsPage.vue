@@ -1,11 +1,18 @@
 <template>
   <div class="container-fluid mt-4">
-    <div class="row justify-content-between mb-5 textcolor">
-      <div class="col-5">
+    <div
+      class="
+        row
+        justify-content-md-between justify-content-around
+        mb-5
+        textcolor
+      "
+    >
+      <div class="col-md-5 col-7">
         <h1>{{ activeVault.name }}</h1>
         <h3>Keeps: {{ vaultkeeps.length }}</h3>
       </div>
-      <div v-if="activeVault.creatorId == account.id" class="col-2">
+      <div v-if="activeVault.creatorId == account.id" class="col-md-2 col-3">
         <button class="btn btn-outline-danger" @click="deleteVault()">
           Delete Vault
         </button>
