@@ -12,12 +12,16 @@
         backgroundfix
       "
     >
-      <div class="row box">
-        <div class="col-md-10 col-8">
+      <div class="row justify-content-md-around box">
+        <div class="col-md-10 col-8 mt-3">
           <h1 class="text-light text-bold">{{ vault.name }}</h1>
         </div>
         <div class="col-md-2 col-1 p-1 d-flex align-items-center p-2">
-          <img :src="vault.creator?.picture" class="img-fluid cropped" alt="" />
+          <img
+            :src="vault.creator?.picture"
+            class="img-fluid cropped m-md-2"
+            alt=""
+          />
         </div>
       </div>
     </div>

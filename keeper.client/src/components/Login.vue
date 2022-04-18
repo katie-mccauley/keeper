@@ -84,6 +84,6 @@ export default {
   cursor: pointer;
 }
 .textcolor {
-  color: #636e72;
+  color: #000000;
 }
 </style>

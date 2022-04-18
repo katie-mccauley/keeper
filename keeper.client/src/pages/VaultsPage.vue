@@ -13,8 +13,8 @@
         <h3>Keeps: {{ vaultkeeps.length }}</h3>
       </div>
       <div v-if="activeVault.creatorId == account.id" class="col-md-2 col-3">
-        <button class="btn btn-outline-danger" @click="deleteVault()">
-          Delete Vault
+        <button class="btn btn-danger" @click="deleteVault()">
+          <h6 class="text-bold p-0 m-0">Delete Vault</h6>
         </button>
       </div>
     </div>
