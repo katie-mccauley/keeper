@@ -80,6 +80,8 @@ export default {
         try {
           Modal.getOrCreateInstance(document.getElementById('create-vault')).hide()
           await vaultsService.createVault(editable.value);
+          editable.value = {}
+
         } catch (error) {
           logger.error(error)
         }

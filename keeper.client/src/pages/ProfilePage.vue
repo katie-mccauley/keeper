@@ -65,6 +65,7 @@ import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { profilesService } from "../services/ProfilesService"
 import { AppState } from "../AppState"
+import { vaultsService } from "../services/VaultsService"
 export default {
   setup() {
     const route = useRoute()
@@ -74,6 +75,7 @@ export default {
           await profilesService.getUser(route.params.id)
           await profilesService.getUserKeeps(route.params.id)
           await profilesService.getUserVaults(route.params.id)
+          // await vaultsService.getAccountVaults()
         }
 
       } catch (error) {

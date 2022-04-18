@@ -6,10 +6,14 @@
     data-bs-target="#active-keep"
   >
     <img :src="keepData.img" class="img-fluid cover" alt="" />
-    <div class="card-img-overlay d-flex align-items-end backgroundfix">
+    <div
+      class="card-img-overlay d-flex align-items-end backgroundfix pb-md-2 pb-0"
+    >
       <div class="row justify-content-md-around box">
-        <div class="col-md-10 col-8">
-          <h1 class="text-light text-bold">{{ keepData.name }}</h1>
+        <div class="col-md-10 col-8 d-flex align-items-end mb-2">
+          <h1 class="text-light text-bold mb-0">
+            {{ keepData.name }}
+          </h1>
         </div>
         <div class="col-md-2 col-1 d-flex align-items-center p-2">
           <img

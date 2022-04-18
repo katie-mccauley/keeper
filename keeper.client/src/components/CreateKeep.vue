@@ -70,6 +70,7 @@ export default {
         try {
           Modal.getOrCreateInstance(document.getElementById('create-keep')).hide()
           await keepsService.createKeep(editable.value);
+          editable.value = {}
         } catch (error) {
           logger.error(error)
         }
