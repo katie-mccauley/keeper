@@ -77,6 +77,7 @@ export default {
         }
 
       } catch (error) {
+
         logger.log(error.message)
       }
     })

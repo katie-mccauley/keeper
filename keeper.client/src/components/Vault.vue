@@ -16,7 +16,7 @@
         <div class="col-md-10 col-8">
           <h1 class="text-light text-bold">{{ vault.name }}</h1>
         </div>
-        <div class="col-md-2 col-1 p-1 d-flex align-items-center">
+        <div class="col-md-2 col-1 p-1 d-flex align-items-center p-2">
           <img :src="vault.creator?.picture" class="img-fluid cropped" alt="" />
         </div>
       </div>
