@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace keeper.Controllers
 {
   [ApiController]
-  [Authorize]
   [Route("api/[controller]")]
   public class VaultKeepsController : ControllerBase
   {
@@ -21,6 +20,7 @@ namespace keeper.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<VaultKeep>> Create([FromBody] VaultKeep vaultKeepData)
     {
       try
@@ -37,6 +37,7 @@ namespace keeper.Controllers
     }
 
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<ActionResult<string>> Delete(int id)
     {
       try

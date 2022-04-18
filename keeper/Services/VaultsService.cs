@@ -56,13 +56,16 @@ namespace keeper.Services
       return vault;
     }
 
-    internal List<Vault> GetVaultsByUserId(string id)
+    internal List<Vault> GetVaultsByUserId(string id, string userId)
     {
       List<Vault> vault = _repo.GetVaultsByUserId(id);
-      // if (userId != id)
-      // {
-      //   return vault.FindAll(v => v.IsPrivate == false);
-      // }
+      List<Vault> notuser = _repo.GetVaultsForNonUser(id);
+      if (userId != id)
+      {
+        return notuser;
+        // return _repo.GetVaultsForNonUser(id);
+      }
+
       return vault;
       // return _repo.GetVaultsByUserId(id);
     }

@@ -31,20 +31,16 @@ namespace keeper.Services
     }
     internal VaultKeep Create(VaultKeep vaultKeepData, Profile userInfo)
     {
-      // Keep keep = _ks.GetById(vaultKeepData.KeepId);
-      // Vault vault = _vs.GetById(vaultKeepData.VaultId, userInfo.Id);
+
+      Vault vault = _vs.GetById(vaultKeepData.VaultId, userInfo.Id);
       // if (vaultKeepData.CreatorId != userInfo?.Id)
       // {
       //   throw new Exception("can't create a vk that isn't yours");
       // }
-      // else if (vault.CreatorId != userInfo?.Id)
-      // {
-      //   throw new Exception("can't create vk of a vault that isn't yours");
-      // }
-      // else if (keep.CreatorId != userInfo?.Id)
-      // {
-      //   throw new Exception("can't create vk of a keep that isn't yours");
-      // }
+      if (vault.CreatorId != userInfo?.Id)
+      {
+        throw new Exception("can't create vk of a vault that isn't yours");
+      }
 
       return _repo.Create(vaultKeepData);
     }

@@ -68,6 +68,7 @@ namespace keeper.Repositories
       throw new Exception("there is no rows effected for editing");
     }
 
+
     internal List<Vault> GetVaultsByUserId(string id)
     {
       string sql = @"
@@ -77,6 +78,23 @@ namespace keeper.Repositories
       FROM vaults v
       JOIN accounts a ON a.id = v.creatorId
       WHERE v.creatorId = @id;
+      ";
+      return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
+      {
+        v.Creator = a;
+        return v;
+      }, new { id }).ToList();
+    }
+
+    internal List<Vault> GetVaultsForNonUser(string id)
+    {
+      string sql = @"
+      SELECT 
+      v.*, 
+      a.*
+      FROM vaults v
+      JOIN accounts a ON a.id = v.creatorId
+      WHERE v.creatorId = @id AND v.isPrivate = false;
       ";
       return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>
       {
