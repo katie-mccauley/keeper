@@ -65,17 +65,17 @@
             <div class="row m-2">
               <div class="col-md-12 text-center">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-4">
                     <h4 class="textcolor">
-                      <i class="mdi mdi-eye"></i> {{ active.views }}
+                      <i class="mdi mdi-eye"></i>{{ active.views }}
                     </h4>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-4">
                     <h4 class="textcolor">
-                      <i class="mdi mdi-save"></i>{{ active.kept }}
+                      <i class="mdi mdi-content-save"></i>{{ active.kept }}
                     </h4>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-4">
                     <h4 class="textcolor">
                       <i class="mdi mdi-share"></i>{{ active.shares }}
                     </h4>
@@ -94,7 +94,7 @@
                     data-bs-toggle="dropdown"
                     title="Add Keep to Vault"
                   >
-                    Add to Vault
+                    <h5 class="text-bold p-0 m-0">Add to Vault</h5>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li v-for="p in accountVaults" :key="p.id">
@@ -225,10 +225,10 @@ export default {
 }
 
 .outline-color {
-  border: 2px solid rgba(85, 239, 196, 1);
+  border: 3px solid rgba(85, 239, 196, 1);
 }
 
 .textcolor {
-  color: rgba(85, 239, 196, 1);
+  color: rgb(72, 208, 169);
 }
 </style>

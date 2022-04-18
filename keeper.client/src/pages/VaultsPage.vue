@@ -72,7 +72,7 @@ export default {
 
       } catch (error) {
         logger.error(error.message)
-        // router.push({ name: 'Home' })
+        router.push({ name: 'Home' })
       }
     })
     return {
