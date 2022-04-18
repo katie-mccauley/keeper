@@ -62,7 +62,7 @@
                 </div>
               </div>
             </div> -->
-            <div class="row">
+            <div class="row m-2">
               <div class="col-md-12 text-center">
                 <div class="row">
                   <div class="col-md-4">
@@ -86,7 +86,7 @@
                 <h1 class="mt-2">{{ active.name }}</h1>
                 <h1 class="mt-2">{{ active.description }}</h1>
               </div>
-              <div class="row justify-content-between align-items-bottom">
+              <div class="row justify-content-between align-items-bottom mt-5">
                 <!-- <div class="row justify-content-between"> -->
                 <div class="col-2" v-if="account.id && route.name != 'Vaults'">
                   <button
