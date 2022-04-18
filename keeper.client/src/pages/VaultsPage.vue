@@ -8,8 +8,10 @@
         textcolor
       "
     >
-      <div class="col-md-5 col-7">
+      <div class="col-md-5 col-7 text-dark">
         <h1>{{ activeVault.name }}</h1>
+        <h3>Description: {{ activeVault.description }}</h3>
+
         <h3>Keeps: {{ vaultkeeps.length }}</h3>
       </div>
       <div v-if="activeVault.creatorId == account.id" class="col-md-2 col-3">
@@ -113,7 +115,7 @@ export default {
 
 <style lang="scss" scoped>
 .masonry-with-columns {
-  columns: 6 200px;
+  columns: 4 200px;
   column-gap: 1rem;
 }
 
