@@ -6,7 +6,7 @@
       </div>
     </router-link>
     <button
-      class="navbar-toggler"
+      class="navbar-toggler navbar-light"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarText"
