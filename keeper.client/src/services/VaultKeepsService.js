@@ -6,6 +6,8 @@ class VaultsKeepsService {
     const res = await api.post("api/vaultkeeps", body)
     logger.log("created vaultkeep", res.data)
     AppState.profileVaultKeeps.push(res.data)
+    AppState.activeKeep.kept = AppState.activeKeep.kept + 1
+
     logger.log("usersvaultskeps", AppState.profileVaultKeeps)
   }
 
