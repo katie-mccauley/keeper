@@ -97,7 +97,7 @@
                     Add to Vault
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-for="p in profileVaults" :key="p.id">
+                    <li v-for="p in accountVaults" :key="p.id">
                       <button
                         class="dropdown-item"
                         type="button"
@@ -209,6 +209,7 @@ export default {
       },
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
+      accountVaults: computed(() => AppState.accountVaults)
     }
   }
 }
