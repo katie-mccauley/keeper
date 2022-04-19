@@ -44,6 +44,8 @@
       </div>
     </div>
   </div>
+  <KeepDetails />
+
   <ModalForm id="create-keep">
     <template #title>Create Keep</template>
     <template #body>

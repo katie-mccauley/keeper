@@ -1,6 +1,7 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
+import { keepsService } from "./KeepsService"
 
 class VaultsService {
   async createVault(body) {
@@ -14,6 +15,8 @@ class VaultsService {
     const res = await api.delete("api/vaults/" + id)
     logger.log("deleting this vault", res.data)
     AppState.profileVaults = AppState.profileVaults.filter(v => v.id != id)
+    const findvk = AppState.profileVaultKeeps.filter(p => p.vaultId == id)
+    findvk = findvk.forEach(f => f.kept -= 1)
     AppState.accountVaults = AppState.accountVaults.filter(v => v.id != id)
   }
 

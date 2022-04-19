@@ -48,6 +48,7 @@
       </div>
     </template>
   </Modal> -->
+  <KeepDetails />
 </template>
 
 
@@ -106,7 +107,7 @@ export default {
         }
       },
       activeKeep: computed(() => AppState.activeKeep),
-      setActiveVk(vk) {
+      async setActiveVk(vk) {
         AppState.activeVaultKeep = {}
         AppState.activeVaultKeep = vk
         logger.log("vvkvkvkvk", AppState.activeVaultKeep)

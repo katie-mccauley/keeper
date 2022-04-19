@@ -25,11 +25,11 @@
       </div>
     </div>
   </div>
-  <KeepDetails />
 </template>
 
 
 <script>
+import { useRoute } from "vue-router"
 import { AppState } from "../AppState"
 import { keepsService } from "../services/KeepsService"
 import { logger } from "../utils/Logger"
@@ -41,6 +41,7 @@ export default {
     }
   },
   setup(props) {
+    const route = useRoute()
     return {
       // coverImg: computed(() => `url('${props.keepData.img}')`)
       async setActive(id) {

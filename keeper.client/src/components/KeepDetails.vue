@@ -204,10 +204,10 @@ export default {
       },
       async deleteVk(body) {
         try {
-          // if (await Pop.confirm()) {
-          //   Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
-          //   await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
-          // }
+          if (await Pop.confirm()) {
+            Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+            await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
+          }
           logger.log("vkid", body)
         } catch (error) {
           logger.error(error.message)
