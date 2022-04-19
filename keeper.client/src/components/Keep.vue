@@ -80,6 +80,13 @@ export default {
   );
 }
 
+.card:hover {
+  transform: scale(1.02);
+  transition: all 0.15s linear;
+  box-shadow: 0 3px 1px -3px rgba(0, 255, 0, 0.2),
+    0 2px 3px 0 rgba(0, 255, 0, 0.14), 0 1px 5px 0 rgba(0, 255, 0, 0.12);
+}
+
 @media screen AND (max-width: 600px) {
   .box {
     inline-size: 140px;
