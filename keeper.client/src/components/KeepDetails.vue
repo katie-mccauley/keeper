@@ -118,7 +118,7 @@
                   <button
                     class="btn btn-danger text-bold"
                     title="delete saved keeped vaults"
-                    @click="deleteVk()"
+                    @click="deleteVk(activevk)"
                   >
                     Delete Keeped Vault
                   </button>
@@ -162,7 +162,12 @@ export default {
   //     required: true,
   //   }
   // },
-
+  props: {
+    activevk: {
+      tpye: Object,
+      required: false
+    }
+  },
   setup() {
     const router = useRouter()
     const route = useRoute()
@@ -197,13 +202,13 @@ export default {
           logger.error(error.message)
         }
       },
-      async deleteVk() {
+      async deleteVk(body) {
         try {
-          if (await Pop.confirm()) {
-            Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
-            await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
-          }
-
+          // if (await Pop.confirm()) {
+          //   Modal.getOrCreateInstance(document.getElementById("active-keep")).hide()
+          //   await vaultKeepsService.deleteVk(AppState.activeVaultKeep.vaultKeepId)
+          // }
+          logger.log("vkid", body)
         } catch (error) {
           logger.error(error.message)
 

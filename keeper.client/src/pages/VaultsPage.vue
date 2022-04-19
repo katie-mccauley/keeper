@@ -61,6 +61,12 @@ import { vaultsService } from "../services/VaultsService"
 import { keepsService } from "../services/KeepsService"
 import Pop from "../utils/Pop"
 export default {
+  props: {
+    keepData: {
+      type: Object,
+      required: false
+    }
+  },
   setup() {
     const route = useRoute()
     const router = useRouter()
@@ -103,7 +109,7 @@ export default {
       setActiveVk(vk) {
         AppState.activeVaultKeep = {}
         AppState.activeVaultKeep = vk
-        // logger.log("vvkvkvkvk", AppState.activeVaultKeep)
+        logger.log("vvkvkvkvk", AppState.activeVaultKeep)
 
       },
       activeVault: computed(() => AppState.activeVault),
