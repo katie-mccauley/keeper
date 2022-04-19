@@ -151,7 +151,10 @@
                 >
                   <h5 class="text-bold p-0 m-0">Add to Vault</h5>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <ul
+                  class="dropdown-menu right-col"
+                  aria-labelledby="dropdownMenu2"
+                >
                   <li v-for="p in accountVaults" :key="p.id">
                     <button
                       class="dropdown-item"
@@ -289,6 +292,11 @@ export default {
 
 .heightimg {
   height: 400px;
+}
+
+.right-col {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .outline-color {
