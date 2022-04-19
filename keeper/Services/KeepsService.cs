@@ -21,9 +21,9 @@ namespace keeper.Services
       return _repo.Create(keepData);
     }
 
-    internal List<Keep> GetAll()
+    internal List<Keep> GetAll(string search)
     {
-      return _repo.GetAll();
+      return _repo.GetAll(search);
     }
 
     internal Keep GetById(int id)

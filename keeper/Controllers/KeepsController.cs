@@ -41,11 +41,11 @@ namespace keeper.Controllers
     }
 
     [HttpGet]
-    public ActionResult<List<Keep>> GetAllPosts()
+    public ActionResult<List<Keep>> GetAllPosts(string search)
     {
       try
       {
-        List<Keep> keeps = _ks.GetAll();
+        List<Keep> keeps = _ks.GetAll(search);
         return Ok(keeps);
       }
       catch (Exception e)

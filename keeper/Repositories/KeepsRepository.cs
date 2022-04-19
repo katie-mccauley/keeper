@@ -52,20 +52,24 @@ namespace keeper.Repositories
       }, new { id }).FirstOrDefault();
     }
 
-    internal List<Keep> GetAll()
+    internal List<Keep> GetAll(string search)
     {
+      search = "%" + search + "%";
       string sql = @"
       SELECT
       k.*, 
       p.*
       FROM keeps k
-      JOIN accounts p WHERE p.id = k.creatorId;
+      JOIN accounts p ON p.id = k.creatorId
+      WHERE k.name LIKE @search
+      ;
+
       ";
       return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
       {
         keep.Creator = profile;
         return keep;
-      }).ToList();
+      }, new { search }).ToList();
     }
 
     internal List<Keep> GetKeepsByUserId(string id)

@@ -16,6 +16,18 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
+    <div class="col-md-6 justify-content-center align-items-center mt-2 ms-5">
+      <form @submit.prevent="search">
+        <i class="fa fa-search"></i>
+        <input
+          type="text"
+          class="form-control form-input"
+          placeholder="Search anything..."
+          v-model="query"
+        />
+      </form>
+    </div>
+
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <!-- <li>
@@ -34,9 +46,24 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import { keepsService } from "../services/KeepsService";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
 export default {
   setup() {
-    return {};
+    const query = ref("")
+    return {
+      query,
+      async search() {
+        try {
+          await keepsService.getAll('?search=' + query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
+    };
   },
 };
 </script>
@@ -69,5 +96,48 @@ a:hover {
   font-size: 64px;
   line-height: 72px;
   color: #636e72;
+}
+
+body {
+  background: #d1d5db;
+}
+
+.height {
+  height: 100vh;
+  max-width: 100px;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  color: #9ca3af;
+}
+
+.form span {
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.left-pan {
+  padding-left: 7px;
+}
+
+.left-pan i {
+  padding-left: 10px;
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
 }
 </style>
