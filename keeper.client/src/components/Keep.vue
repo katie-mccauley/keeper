@@ -11,9 +11,9 @@
     >
       <div class="row justify-content-md-around box">
         <div class="col-md-10 col-8 d-flex align-items-end mb-2">
-          <h1 class="text-light text-bold mb-0">
+          <h2 class="text-light text-bold mb-0">
             {{ keepData.name }}
-          </h1>
+          </h2>
         </div>
         <div class="col-md-2 col-1 d-flex align-items-center p-2">
           <img

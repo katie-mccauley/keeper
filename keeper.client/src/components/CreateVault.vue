@@ -18,6 +18,8 @@
       <input
         v-model="editable.name"
         required
+        maxlength="9"
+        minlength="3"
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -29,6 +31,8 @@
       <input
         v-model="editable.description"
         required
+        maxlength="50"
+        minlength="3"
         type="text"
         class="form-control"
         aria-describedby="helpId"

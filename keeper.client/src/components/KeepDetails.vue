@@ -103,22 +103,22 @@
                         type="button"
                         @click="createVaultKeep(p)"
                       >
-                        {{ p.name }}
+                        <h5>{{ p.name }}</h5>
                       </button>
                     </li>
                   </ul>
                 </div>
-                <div class="col-2">
-                  <h3
-                    class="text-danger"
-                    v-if="account.id == profile.id && route.name == 'Vaults'"
+                <div
+                  class="col-md-5 col-8"
+                  v-if="account.id == profile.id && route.name == 'Vaults'"
+                >
+                  <button
+                    class="btn btn-danger text-bold"
+                    title="delete saved keeped vaults"
+                    @click="deleteVk()"
                   >
-                    <i
-                      class="mdi mdi-delete selectable"
-                      title="delete saved keeped vaults"
-                      @click="deleteVk()"
-                    ></i>
-                  </h3>
+                    Delete Keeped Vault
+                  </button>
                 </div>
 
                 <div class="col-2">
@@ -227,6 +227,6 @@ export default {
 }
 
 .textcolor {
-  color: rgb(72, 208, 169);
+  color: rgba(72, 208, 170, 0.926);
 }
 </style>

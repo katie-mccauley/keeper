@@ -69,6 +69,7 @@ export default {
         if (route.name == 'Vaults') {
           await vaultKeepsService.getVaultKeeps(route.params.id)
           await vaultsService.getById(route.params.id)
+          // await vaultsService.getAccountVaults()
         }
 
 
