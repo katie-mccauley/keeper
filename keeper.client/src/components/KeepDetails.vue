@@ -110,7 +110,10 @@
                 </div>
                 <div
                   class="col-md-5 col-8"
-                  v-if="account.id == profile.id && route.name == 'Vaults'"
+                  v-if="
+                    account.id == activeVault.creatorId &&
+                    route.name == 'Vaults'
+                  "
                 >
                   <button
                     class="btn btn-danger text-bold"
@@ -208,7 +211,8 @@ export default {
       },
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
-      accountVaults: computed(() => AppState.accountVaults)
+      accountVaults: computed(() => AppState.accountVaults),
+      activevk: computed(() => AppState.activeVaultKeep)
     }
   }
 }
