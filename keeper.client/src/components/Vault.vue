@@ -4,10 +4,12 @@
     @click="goToVault(vault)"
   >
     <img :src="vault.img" class="img-fluid" alt="" />
-    <div class="card-img-overlay d-flex align-items-end backgroundfix pb-0">
+    <div
+      class="card-img-overlay d-flex align-items-end backgroundfix pb-md-2 pb-0"
+    >
       <div class="row justify-content-md-around box">
-        <div class="col-md-10 col-8 mt-3">
-          <h2 class="text-light text-bold">{{ vault.name }}</h2>
+        <div class="col-md-10 col-8 d-flex align-items-end mb-2">
+          <h2 class="text-light text-bold mb-2">{{ vault.name }}</h2>
         </div>
         <div class="col-md-2 col-1 p-1 d-flex align-items-center p-2">
           <img

@@ -53,8 +53,11 @@
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { AuthService } from "../services/AuthService";
+import { useRoute, useRouter } from "vue-router";
 export default {
   setup() {
+    const route = useRoute()
+    const router = useRouter()
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
