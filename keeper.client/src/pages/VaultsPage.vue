@@ -82,7 +82,9 @@ export default {
 
       } catch (error) {
         logger.error(error.message)
+        Pop.toast(error.message, 'error')
         router.push({ name: 'Home' })
+
       }
     })
     return {
