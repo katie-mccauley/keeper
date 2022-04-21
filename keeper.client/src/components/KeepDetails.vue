@@ -181,6 +181,14 @@ export default {
 
         }
       },
+      // async save(name, description) {
+      //   try {
+      //     await keepsService.save(name, description)
+      //   } catch (error) {
+      //     logger.error(error)
+      //     Pop.toast('error of editable', error.message)
+      //   }
+      // },
       // show() {
       //   try {
       //     flipped = !flipped

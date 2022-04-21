@@ -29,5 +29,11 @@ class KeepsService {
     logger.log("created this keep", res.data)
     AppState.profileKeeps.push(res.data)
   }
+
+  // async save(body) {
+  //   const res = await api.get("api/keeps/" + body.id, body)
+  //   logger.log("edited this keep", res.data)
+  //   AppState.profileKeeps = res.data
+  // }
 }
 export const keepsService = new KeepsService()
