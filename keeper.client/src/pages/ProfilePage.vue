@@ -4,6 +4,25 @@
       <div class="col-md-1 col-3">
         <div class="card">
           <img :src="profile.picture" class="img-fluid" alt="" />
+          <!-- <div
+            class="
+              card-img-overlay
+              d-flex
+              align-items-end
+              justify-content-end
+              mb-0
+              p-0
+              pe-1
+            "
+          >
+            <h5>
+              <i
+                class="mdi mdi-pencil text-success selectable"
+                data-bs-toggle="modal"
+                data-bs-target="#edit-account"
+              ></i>
+            </h5>
+          </div> -->
         </div>
       </div>
       <div class="col-md-5 col-7">
@@ -58,6 +77,10 @@
       <CreateVault />
     </template>
   </ModalForm>
+  <!-- <ModalForm id="edit-account">
+    <template #title>Edit Account</template>
+    <template #body><EditAccount :accountData="profile" /></template>
+  </ModalForm> -->
 </template>
 
 

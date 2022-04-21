@@ -22,50 +22,6 @@
             />
           </div>
           <div class="col-md-6 card">
-            <!-- <div>
-              <div class="d-flex justify-content-around">
-                <h4 class="text-info">
-                  <i class="mdi mdi-eye"></i> {{ active.views }}
-                </h4>
-                <h4 class="text-info">
-                  <i class="mdi mdi-save"></i>{{ active.kept }}
-                </h4>
-                <h4 class="text-info">
-                  <i class="mdi mdi-share"></i>{{ active.shares }}
-                </h4>
-              </div>
-
-              <h1>{{ active.name }}</h1>
-              <h1>{{ active.description }}</h1>
-
-              <div class="row mt-5 align-items-end">
-                <div class="col-10 d-flex justify-content-between">
-                  <button
-                    class="btn outline-color dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                  >
-                    Add to Vault
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-for="p in profileVaults" :key="p.id">
-                      <button
-                        class="dropdown-item"
-                        type="button"
-                        @click="createVaultKeep(p)"
-                      >
-                        {{ p.name }}
-                      </button>
-                    </li>
-                  </ul>
-                  <img
-                    :src="active.creator?.picture"
-                    @click="goToProfile(active.creator.id)"
-                    class="img-fluid cropped"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div> -->
             <div class="row m-2">
               <div class="col-md-12 text-center">
                 <div class="row">
@@ -86,59 +42,13 @@
                   </div>
                 </div>
               </div>
+              <!-- <div>
+                <i class="mdi mdi-pencil text-success" @click="show"></i>
+              </div> -->
               <div class="col-md-12 mt-2">
                 <h1 class="mt-2">{{ active.name }}</h1>
                 <h1 class="mt-2">{{ active.description }}</h1>
               </div>
-              <!-- <div class="row justify-content-between align-items-end mt-5">
-                
-                <div class="col-2" v-if="account.id && route.name != 'Vaults'">
-                  <button
-                    class="btn outline-color dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    title="Add Keep to Vault"
-                  >
-                    <h5 class="text-bold p-0 m-0">Add to Vault</h5>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li v-for="p in accountVaults" :key="p.id">
-                      <button
-                        class="dropdown-item"
-                        type="button"
-                        @click="createVaultKeep(p)"
-                      >
-                        <h5>{{ p.name }}</h5>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-                <div
-                  class="col-md-5 col-8"
-                  v-if="
-                    account.id == activeVault.creatorId &&
-                    route.name == 'Vaults'
-                  "
-                >
-                  <button
-                    class="btn btn-danger text-bold"
-                    title="delete saved keeped vaults"
-                    @click="deleteVk(activevk)"
-                  >
-                    Delete Keeped Vault
-                  </button>
-                </div>
-
-                <div class="col-2">
-                  <img
-                    :src="active.creator?.picture"
-                    @click="goToProfile(active.creatorId)"
-                    class="img-fluid cropped selectable"
-                    :alt="active.name + 'profile picture'"
-                    :title="active.name + 'profile picture'"
-                  />
-                </div>
-                
-              </div> -->
             </div>
             <div
               class="row justify-content-between align-items-end mt-5 h-50 mb-3"
@@ -200,7 +110,7 @@
 
 
 <script>
-import { computed } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { keepsService } from "../services/KeepsService"
@@ -226,6 +136,8 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
+    // let flipped = ref(false)
+    // const editable = ref({})
     return {
       route,
       active: computed(() => AppState.activeKeep),
@@ -269,6 +181,14 @@ export default {
 
         }
       },
+      // show() {
+      //   try {
+      //     flipped = !flipped
+      //     logger.log(flipped)
+      //   } catch (error) {
+      //     logger.error(error.message)
+      //   }
+      // },
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
       accountVaults: computed(() => AppState.accountVaults),
