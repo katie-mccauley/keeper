@@ -5,7 +5,7 @@
     data-bs-toggle="modal"
     data-bs-target="#active-keep"
   >
-    <img :src="keepData.img" class="img-fluid cover" alt="" />
+    <img :src="keepData.img" class="img-fluid cover rounded" alt="" />
     <div
       class="card-img-overlay d-flex align-items-end backgroundfix pb-md-2 pb-0"
     >

@@ -17,7 +17,7 @@
           <div class="col-md-6 p-0">
             <img
               :src="active.img"
-              class="w-100 object-fit-cover heightimg"
+              class="w-100 object-fit-cover heightimg img-fluid"
               alt=""
             />
           </div>

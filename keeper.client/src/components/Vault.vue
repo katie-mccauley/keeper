@@ -3,7 +3,7 @@
     class="card selectable border border-3 rounded"
     @click="goToVault(vault)"
   >
-    <img :src="vault.img" class="img-fluid" alt="" />
+    <img :src="vault.img" class="img-fluid rounded" alt="" />
     <div
       class="card-img-overlay d-flex align-items-end backgroundfix pb-md-2 pb-0"
     >
