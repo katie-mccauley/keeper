@@ -4,25 +4,6 @@
       <div class="col-md-1 col-3">
         <div class="card">
           <img :src="profile.picture" class="img-fluid" alt="" />
-          <!-- <div
-            class="
-              card-img-overlay
-              d-flex
-              align-items-end
-              justify-content-end
-              mb-0
-              p-0
-              pe-1
-            "
-          >
-            <h5>
-              <i
-                class="mdi mdi-pencil text-success selectable"
-                data-bs-toggle="modal"
-                data-bs-target="#edit-account"
-              ></i>
-            </h5>
-          </div> -->
         </div>
       </div>
       <div class="col-md-5 col-7">
@@ -43,7 +24,6 @@
     </h2>
     <div class="masonry-with-columns">
       <div class="space" v-for="k in keeps" :key="k.id">
-        <!-- <img :src="k.img" class="rounded cropped img-fluid" alt="" /> -->
         <Keep :keepData="k" />
       </div>
     </div>

@@ -33,10 +33,6 @@ namespace keeper.Services
     {
 
       Vault vault = _vs.GetById(vaultKeepData.VaultId, userInfo.Id);
-      // if (vaultKeepData.CreatorId != userInfo?.Id)
-      // {
-      //   throw new Exception("can't create a vk that isn't yours");
-      // }
       if (vault.CreatorId != userInfo?.Id)
       {
         throw new Exception("can't create vk of a vault that isn't yours");

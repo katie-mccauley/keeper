@@ -42,9 +42,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <div>
-                <i class="mdi mdi-pencil text-success" @click="show"></i>
-              </div> -->
               <div class="col-md-12 mt-2">
                 <h1 class="mt-2">{{ active.name }}</h1>
                 <h1 class="mt-2">{{ active.description }}</h1>
@@ -121,12 +118,6 @@ import { watchEffect } from "@vue/runtime-core"
 import { profilesService } from "../services/ProfilesService"
 import Pop from "../utils/Pop"
 export default {
-  // props: {
-  //   vaultKeep: {
-  //     type: Object,
-  //     required: true,
-  //   }
-  // },
   props: {
     activevk: {
       tpye: Object,
@@ -136,8 +127,6 @@ export default {
   setup() {
     const router = useRouter()
     const route = useRoute()
-    // let flipped = ref(false)
-    // const editable = ref({})
     return {
       route,
       active: computed(() => AppState.activeKeep),
@@ -181,22 +170,6 @@ export default {
 
         }
       },
-      // async save(name, description) {
-      //   try {
-      //     await keepsService.save(name, description)
-      //   } catch (error) {
-      //     logger.error(error)
-      //     Pop.toast('error of editable', error.message)
-      //   }
-      // },
-      // show() {
-      //   try {
-      //     flipped = !flipped
-      //     logger.log(flipped)
-      //   } catch (error) {
-      //     logger.error(error.message)
-      //   }
-      // },
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
       accountVaults: computed(() => AppState.accountVaults),

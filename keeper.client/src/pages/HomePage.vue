@@ -22,14 +22,12 @@ export default {
     onMounted(async () => {
       try {
         await keepsService.getAll()
-        // await vaultsService.getAccountVaults()
       } catch (error) {
         logger.error(error)
       }
     })
     return {
       keeps: computed(() => AppState.keeps),
-      // coverImg: computed(() => `url('${AppState.keeps.img}')`)
     }
   }
 }
@@ -67,12 +65,6 @@ export default {
     rgba(0, 0, 0, 0.53) 99.61%
   );
 }
-
-// .cover-img {
-//   background-image: v-bind(coverImg);
-//   background-size: cover;
-//   background-position: center;
-// }
 
 @media screen AND (max-width: 600px) {
   .masonry-with-columns {

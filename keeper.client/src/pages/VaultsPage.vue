@@ -22,32 +22,12 @@
     </div>
     <div class="masonry-with-columns">
       <div class="space rounded shadow" v-for="vk in vaultkeeps" :key="vk.id">
-        <!-- <div
-          class="card selectable rounded shadow"
-          data-bs-toggle="modal"
-          data-bs-target="#active-keep"
-          @click="setActive(vk.id)"
-        >
-          <img :src="vk.img" class="img-fluid" alt="" />
-          <div class="card-img-overlay">
-            <h1>{{ vk.name }}</h1>
-            <img :src="vk.creator?.picture" class="img-fluid cropped" alt="" />
-          </div>
-        </div> -->
         <div @click="setActiveVk(vk)">
           <Keep :keepData="vk" />
         </div>
       </div>
     </div>
   </div>
-  <!-- <Modal id="vaultkeep-details">
-    <template #modal-title>VaultKeep Details</template>
-    <template #modal-body>
-      <div class="col-md-6 p-0">
-        <img :src="activeKeep.img" class="w-100 object-fit-cover" alt="" />
-      </div>
-    </template>
-  </Modal> -->
   <KeepDetails />
 </template>
 
@@ -76,7 +56,6 @@ export default {
         if (route.name == 'Vaults') {
           await vaultKeepsService.getVaultKeeps(route.params.id)
           await vaultsService.getById(route.params.id)
-          // await vaultsService.getAccountVaults()
         }
 
 

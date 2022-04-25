@@ -45,7 +45,6 @@ export default {
         } else {
           const id = vault.id
           router.push({ name: 'Vaults', params: { id } })
-          // await vaultsService.getById(id)
         }
 
       }

@@ -43,18 +43,13 @@ export default {
   setup(props) {
     const route = useRoute()
     return {
-      // coverImg: computed(() => `url('${props.keepData.img}')`)
       async setActive(id) {
         try {
-          // AppState.activeKeep = props.keepData
           await keepsService.getById(id);
         } catch (error) {
           logger.error(error)
         }
       },
-      // goToProfile(id) {
-      // router.push({ name: 'Profile', params: { id } })
-      // }
     }
   }
 }

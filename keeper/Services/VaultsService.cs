@@ -45,7 +45,6 @@ namespace keeper.Services
       original.Name = updateData.Name ?? original.Name;
       original.Description = updateData.Description ?? original.Description;
       original.Img = updateData.Img ?? original.Img;
-      //   original.IsPrivate = updateData.IsPrivate ?? original.IsPrivate;
 
       return _repo.Update(original);
     }
@@ -63,11 +62,9 @@ namespace keeper.Services
       if (userId != id)
       {
         return notuser;
-        // return _repo.GetVaultsForNonUser(id);
       }
 
       return vault;
-      // return _repo.GetVaultsByUserId(id);
     }
 
     internal ActionResult<string> Remove(int id, string userId)
