@@ -57,14 +57,17 @@ namespace keeper.Services
 
     internal List<Vault> GetVaultsByUserId(string id, string userId)
     {
-      List<Vault> vault = _repo.GetVaultsByUserId(id);
-      List<Vault> notuser = _repo.GetVaultsForNonUser(id);
       if (userId != id)
       {
+        List<Vault> notuser = _repo.GetVaultsForNonUser(id);
         return notuser;
       }
+      else
+      {
+        List<Vault> vault = _repo.GetVaultsByUserId(id);
+        return vault;
+      }
 
-      return vault;
     }
 
     internal ActionResult<string> Remove(int id, string userId)
